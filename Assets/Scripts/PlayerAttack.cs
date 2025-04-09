@@ -2,13 +2,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public PlayerAttackState currentAttackState = PlayerAttackState.Melee; // default
-    private Animator animator;
-
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
+    public PlayerAttackState currentAttackState = PlayerAttackState.Melee;
 
     void Update()
     {
@@ -17,31 +11,27 @@ public class PlayerAttack : MonoBehaviour
 
     void HandleAttackInput()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0)) // klik kiri
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             switch (currentAttackState)
             {
                 case PlayerAttackState.Melee:
-                    PerformMeleeAttack();
+                    MeleeAttack();
                     break;
 
                 case PlayerAttackState.Ranged:
-                    // PerformRangedAttack();
+                    Debug.Log("Ranged Attack (belum diimplementasi)");
                     break;
 
                 case PlayerAttackState.Magic:
-                    // PerformMagicAttack();
+                    Debug.Log("Magic Attack (belum diimplementasi)");
                     break;
             }
         }
     }
 
-    void PerformMeleeAttack()
+    void MeleeAttack()
     {
         Debug.Log("Melee Attack");
-        if (animator != null)
-        {
-            animator.SetTrigger("MeleeAttack");
-        }
     }
 }

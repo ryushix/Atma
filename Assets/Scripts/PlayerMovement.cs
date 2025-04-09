@@ -200,7 +200,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
 
-        // Jangan ganti state ke DoubleJump jika masih dash
         if (!isDashing)
             ChangeState(PlayerMovementState.DoubleJump);
 
