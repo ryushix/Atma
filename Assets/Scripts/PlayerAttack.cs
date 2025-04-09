@@ -19,7 +19,7 @@ public class PlayerAttack : MonoBehaviour
                     MeleeAttack();
                     break;
 
-                case PlayerAttackState.Ranged:
+                case PlayerAttackState.Range:
                     Debug.Log("Ranged Attack (belum diimplementasi)");
                     break;
 

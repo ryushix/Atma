@@ -2,6 +2,6 @@ public enum PlayerAttackState
 {
     None,
     Melee,
-    Ranged,
+    Range,
     Magic
 }
