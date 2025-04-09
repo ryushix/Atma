@@ -63,7 +63,7 @@ public class EnemyJumper : MonoBehaviour
 
     void Jump()
     {
-        rb.velocity = new Vector2((movingRight ? 1 : -1) * moveSpeed, jumpForce);
+        rb.linearVelocity = new Vector2((movingRight ? 1 : -1) * moveSpeed, jumpForce);
     }
 
     void ChasePlayer()
@@ -75,13 +75,13 @@ public class EnemyJumper : MonoBehaviour
             Flip();
         }
 
-        rb.velocity = new Vector2(direction * chaseSpeed, jumpForce);
+        rb.linearVelocity = new Vector2(direction * chaseSpeed, jumpForce);
     }
 
 
     private bool IsGrounded()
     {
-        return rb.velocity.y == 0;
+        return rb.linearVelocity.y == 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

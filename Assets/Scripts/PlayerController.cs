@@ -64,81 +64,91 @@ public class PlayerController : MonoBehaviour
             ChangeState(moveInput != 0 ? PlayerState.Walk : PlayerState.Idle);
         }
 
-        if (isTouchingWall && !isGrounded && rb.velocity.y < 0)
+        if (isTouchingWall && !isGrounded && rb.linearVelocity.y < 0)
         {
             ChangeState(PlayerState.WallSlide);
         }
 
-        if (Input.GetKeyDown(KeyCode.S) && IsOnPlatform()) 
+        if (isDashing)
         {
-            StartCoroutine(DisablePlatformCollision());
+            ContinueDash();
         }
 
         switch (currentState)
         {
             case PlayerState.Idle:
                 if (moveInput != 0) ChangeState(PlayerState.Walk);
-                if (Input.GetKey(KeyCode.LeftShift)) Dash();
+                if (Input.GetKeyDown(KeyCode.LeftShift)) StartDash();
                 if (Input.GetKeyDown(KeyCode.Space)) Jump();
                 break;
 
             case PlayerState.Walk:
                 Move();
                 if (moveInput == 0) ChangeState(PlayerState.Idle);
-                if (Input.GetKey(KeyCode.LeftShift)) Dash();
+                if (Input.GetKeyDown(KeyCode.LeftShift)) StartDash();
                 if (Input.GetKeyDown(KeyCode.Space)) Jump();
-                break;
-
-            case PlayerState.Dash:
-                if (Input.GetKeyDown(KeyCode.Space) && !jumpedAfterDash) Jump();
                 break;
 
             case PlayerState.Jump:
                 if (Input.GetKeyDown(KeyCode.Space) && !hasDoubleJumped) DoubleJump();
                 MoveInAir();
-                if (Input.GetKey(KeyCode.LeftShift)) Dash();
+                if (Input.GetKeyDown(KeyCode.LeftShift)) StartDash();
                 break;
 
             case PlayerState.DoubleJump:
                 MoveInAir();
-                if (Input.GetKey(KeyCode.LeftShift)) Dash();
+                if (Input.GetKeyDown(KeyCode.LeftShift)) StartDash();
                 break;
 
             case PlayerState.WallSlide:
                 WallSlide();
                 if (Input.GetKeyDown(KeyCode.Space)) WallJump();
-                if (Input.GetKey(KeyCode.LeftShift)) Dash();
                 break;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S) && IsOnPlatform()) 
+        {
+            StartCoroutine(DisablePlatformCollision());
         }
     }
 
+
+
     void Move()
     {
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
         FlipCharacter();
     }
 
     void MoveInAir()
     {
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
         FlipCharacter();
     }
 
-    void Dash()
+    void StartDash()
     {
         if (!isDashing)
         {
-            ChangeState(PlayerState.Dash);
             isDashing = true;
             dashTimeLeft = dashDuration;
+            dashDirection = facingRight ? 1 : -1;
             if (!isGrounded) jumpedAfterDash = true;
+            ChangeState(PlayerState.Dash);
         }
+    }
 
+    void ContinueDash()
+    {
         if (dashTimeLeft > 0)
         {
-            dashDirection = facingRight ? 1 : -1;
-            rb.velocity = new Vector2(dashDirection * dashSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(dashDirection * dashSpeed, rb.linearVelocity.y);
             dashTimeLeft -= Time.deltaTime;
+
+            if (Input.GetKeyDown(KeyCode.Space) && !jumpedAfterDash)
+            {
+                Jump();
+            }
         }
         else
         {
@@ -147,11 +157,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
+
     void Jump()
     {
         if (isGrounded || currentState == PlayerState.Dash)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             ChangeState(PlayerState.Jump);
         }
         else if (!hasDoubleJumped && !jumpedAfterDash)
@@ -162,21 +175,27 @@ public class PlayerController : MonoBehaviour
 
     void DoubleJump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        ChangeState(PlayerState.DoubleJump);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
+        // Jangan ganti state ke DoubleJump jika masih dash
+        if (!isDashing)
+            ChangeState(PlayerState.DoubleJump);
+
         hasDoubleJumped = true;
     }
+
+
 
     void WallSlide()
     {
         isWallSliding = true;
-        rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, -wallSlideSpeed);
     }
 
     void WallJump()
     {
         float jumpDir = -wallDirection;
-        rb.velocity = new Vector2(jumpDir * wallJumpPush, wallJumpForce);
+        rb.linearVelocity = new Vector2(jumpDir * wallJumpPush, wallJumpForce);
         hasDoubleJumped = false;
         jumpedAfterDash = false;
         ChangeState(PlayerState.Jump);

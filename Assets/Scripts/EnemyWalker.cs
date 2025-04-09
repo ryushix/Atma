@@ -45,7 +45,7 @@ public class EnemyWalker : MonoBehaviour
     void Patrol()
     {
         float moveDirection = movingRight ? 1 : -1;
-        rb.velocity = new Vector2(moveDirection * moveSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(moveDirection * moveSpeed, rb.linearVelocity.y);
     }
 
     void ChasePlayer()
@@ -57,7 +57,7 @@ public class EnemyWalker : MonoBehaviour
             Flip();
         }
 
-        rb.velocity = new Vector2(direction * chaseSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(direction * chaseSpeed, rb.linearVelocity.y);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
