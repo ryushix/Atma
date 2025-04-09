@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class EnemyJumper : MonoBehaviour
+public class SlimeEnemy : MonoBehaviour
 {
     public float jumpForce = 7f;
     public float moveSpeed = 2f;
