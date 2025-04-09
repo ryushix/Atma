@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     public bool facingRight = true;
@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     private bool jumpedAfterDash;
     private float dashDirection;
 
+    [Header("Physics Material Settings")]
     public PhysicsMaterial2D highFrictionMaterial;
     public PhysicsMaterial2D lowFrictionMaterial;
 
