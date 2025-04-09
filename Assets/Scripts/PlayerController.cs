@@ -36,6 +36,10 @@ public class PlayerController : MonoBehaviour
     private bool jumpedAfterDash;
     private float dashDirection;
 
+    public PhysicsMaterial2D highFrictionMaterial;
+    public PhysicsMaterial2D lowFrictionMaterial;
+
+
     private PlayerState currentState;
 
     void Start()
@@ -112,6 +116,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        if (isGrounded)
+        {
+            if (Mathf.Abs(moveInput) < 0.01f && !isDashing)
+            {
+                playerCollider.sharedMaterial = highFrictionMaterial;
+            }
+            else
+            {
+                playerCollider.sharedMaterial = lowFrictionMaterial;
+            }
+        }
+        else
+        {
+            playerCollider.sharedMaterial = lowFrictionMaterial;
+        }
+    }
 
 
     void Move()
