@@ -2985,8 +2985,8 @@ GameObject:
   - component: {fileID: 1189896260}
   - component: {fileID: 1189896259}
   - component: {fileID: 1189896263}
-  - component: {fileID: 1189896264}
   - component: {fileID: 1189896265}
+  - component: {fileID: 1189896264}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -3143,6 +3143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3fac1f465fa404ca2287404c03f987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   facingRight: 1
   moveSpeed: 4
   jumpForce: 10
@@ -3196,7 +3197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012ba17bbcf8a794fbc8ff4fbbe8ade3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentAttackState: 2
+  currentAttackState: 1
 --- !u!1 &1328199913
 GameObject:
   m_ObjectHideFlags: 0

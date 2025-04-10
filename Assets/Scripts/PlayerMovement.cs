@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public Animator animator;
     public bool facingRight = true;
     private Collider2D playerCollider;
     private float moveInput;
@@ -47,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
         ChangeState(PlayerMovementState.Idle);
     }
 
@@ -77,7 +79,9 @@ public class PlayerMovement : MonoBehaviour
         if (isDashing)
         {
             ContinueDash();
+            return;
         }
+        animator.SetBool("isRunning", moveInput != 0);
 
         switch (currentState)
         {
