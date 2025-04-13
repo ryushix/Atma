@@ -12,11 +12,22 @@ public class PlayerStateManager : MonoBehaviour
     void Start()
     {
         currentState = idleState;
-        currentState.EnterState(this);
+        currentState.EnterState();
     }
 
     void Update()
     {
-        
+        currentState.UpdateState();
+    }
+
+    void FxedUpdate()
+    {
+        currentState.FixedUpdateState();
+    }
+
+    public void SwitchState(PlayerBaseState newState)
+    {
+        currentState = newState;
+        newState.EnterState();
     }
 }
