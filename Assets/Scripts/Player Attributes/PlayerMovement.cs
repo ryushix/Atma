@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
 
     [Header("Jump Settings")]
-    public float jumpForce = 7f;
+    public float jumpForce = 10f;
     public Transform groundCheck;
     public Transform leftWallCheck;
     public Transform rightWallCheck;
@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask platformLayer;
 
     [Header("Wall Jump Settings")]
-    public float wallJumpForce = 8f;
+    public float wallJumpForce = 10f;
     public float wallJumpPush = 5f;
     public float wallSlideSpeed = 2f;
     private bool isWallSliding;
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
             ContinueDash();
             return;
         }
-        animator.SetBool("isRunning", moveInput != 0);
+        animator.Play("PlayerIdle");
 
         switch (currentState)
         {
@@ -93,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
             case PlayerMovementState.Walk:
                 Move();
+                animator.Play("PlayerRun");
                 if (moveInput == 0) ChangeState(PlayerMovementState.Idle);
                 if (Input.GetKeyDown(KeyCode.LeftShift)) StartDash();
                 if (Input.GetKeyDown(KeyCode.Space)) Jump();
@@ -100,12 +101,12 @@ public class PlayerMovement : MonoBehaviour
 
             case PlayerMovementState.Jump:
                 if (Input.GetKeyDown(KeyCode.Space) && !hasDoubleJumped) DoubleJump();
-                MoveInAir();
+                // MoveInAir();
                 if (Input.GetKeyDown(KeyCode.LeftShift)) StartDash();
                 break;
 
             case PlayerMovementState.DoubleJump:
-                MoveInAir();
+                // MoveInAir();
                 if (Input.GetKeyDown(KeyCode.LeftShift)) StartDash();
                 break;
 
@@ -191,7 +192,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded || currentState == PlayerMovementState.Dash)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            rb.linearVelocity = new Vector2(moveInput * moveSpeed, jumpForce);
+            Debug.Log("jump speed" + rb.linearVelocity);
             ChangeState(PlayerMovementState.Jump);
         }
         else if (!hasDoubleJumped && !jumpedAfterDash)
@@ -202,7 +204,7 @@ public class PlayerMovement : MonoBehaviour
 
     void DoubleJump()
     {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, jumpForce);
 
         if (!isDashing)
             ChangeState(PlayerMovementState.DoubleJump);
@@ -210,12 +212,10 @@ public class PlayerMovement : MonoBehaviour
         hasDoubleJumped = true;
     }
 
-
-
     void WallSlide()
     {
         isWallSliding = true;
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, -wallSlideSpeed);
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, -wallSlideSpeed);
     }
 
     void WallJump()

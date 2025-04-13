@@ -1,3 +1,6 @@
+using System.Collections;
+using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement2D : MonoBehaviour
@@ -15,130 +18,175 @@ public class PlayerMovement2D : MonoBehaviour
 
     private PlayerMovementState currentState;
 
-    [SerializeField]private bool isGrounded;
-
     [Header("Movement Settings")]
-    private float moveInput;
     [SerializeField] private bool facingRight = true;
     public float moveSpeed = 4f;
 
     [Header("Jump Settings")]
-    [SerializeField] private bool hasDoubleJumped;
-    [SerializeField] private bool isTouchingWall;
+    public bool hasDoubleJumped;
+    public bool isTouchingWall;
+    public AnimationCurve jumpCurve;
     [SerializeField] private int wallDirection;
-    [SerializeField] private float jumpForce = 10f;
-
-    [Header("Wall Jump Settings")]
-    [SerializeField] private float wallJumpForce = 10f;
-    [SerializeField] private float wallJumpDistance = 5f;
-    [SerializeField] private bool isWallSliding;
+    [SerializeField] private float jumpForce = 7f;
+    [SerializeField] private float jumpPower = 6f;
+    public float jumpDuration = 0.15f;
+    private float jumpTimer;
+    private bool isJumping;
 
     [Header("Wall Slide Settings")]
+    public bool isWallSliding;
     [SerializeField] private float wallSlideSpeed = 2f;
 
     [Header("Dash Settings")]
-    public bool isDashing;
-    private float dashTimeLeft;
-    [SerializeField]private float dashSpeed = 10f;
-    [SerializeField]private float dashDuration = 0.5f;
-    [SerializeField]private bool jumpedAfterDash;
-    [SerializeField]private float dashDirection;
+    public bool isDashing = false;
+    public bool dashedAfterJump;
+    private float dashDirection;
+    private Coroutine dashCoroutine;
+    [SerializeField]private float dashDuration = 0.2f;
+    [SerializeField]private float dashForce = 7f;
+    
+
 
     [Header("Physics Material Settings")]
     public PhysicsMaterial2D highFrictionMaterial;
     public PhysicsMaterial2D lowFrictionMaterial;
 
-    void Start()
+    void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<Collider2D>();
         playerAnim = GetComponent<Animator>();
+
+        groundCheck = transform.Find("GroundCheck");
+        leftWallCheck = transform.Find("LeftWallCheck");
+        rightWallCheck = transform.Find("RightWallCheck");
+
+        groundLayer = LayerMask.GetMask("Ground");
+        platformLayer = LayerMask.GetMask("Platform");
     }
-    
-    void Move()
+    void Start()
     {
-        moveInput = Input.GetAxisRaw("Horizontal");
+        
+    }
+
+    void Update()
+    {
+        // bool touchingLeftWall = Physics2D.OverlapCircle(leftWallCheck.position, 0.1f, groundLayer);
+        // bool touchingRightWall = Physics2D.OverlapCircle(rightWallCheck.position, 0.1f, groundLayer);
+
+        // isTouchingWall = touchingLeftWall || touchingRightWall;
+        // wallDirection = touchingLeftWall ? -1 : touchingRightWall ? 1 : 0;
+    }
+
+    public bool isGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer | platformLayer);
+    }
+
+    public bool isFalling()
+    {
+        return playerRb.linearVelocity.y < -0.1f;
+
+    }
+    public void Move(float moveInput)
+    {
         playerRb.linearVelocity = new Vector2(moveInput * moveSpeed, playerRb.linearVelocity.y);
-        FlipCharacter();
+        playerAnim.Play("PlayerRun");
+        FlipCharacter(moveInput);
     }
 
-    void MoveInAir()
+    public void StopMovement()
+    {
+        playerRb.linearVelocity = Vector2.zero;
+    }
+
+    public void MoveInAir(float moveInput)
     {
         playerRb.linearVelocity = new Vector2(moveInput * moveSpeed, playerRb.linearVelocity.y);
-        FlipCharacter();
-    }
-    
-    void StartDash()
-    {
-        if (!isDashing)
-        {
-            isDashing = true;
-            dashTimeLeft = dashDuration;
-            dashDirection = facingRight ? 1 : -1;
-            if (!isGrounded) jumpedAfterDash = true;
-            // ChangeState(PlayerMovementState.Dash);
-        }
+        FlipCharacter(moveInput);
     }
 
-    void ContinueDash()
+    public void Jump()
     {
-        if (dashTimeLeft > 0)
-        {
-            playerRb.linearVelocity = new Vector2(dashDirection * dashSpeed, playerRb.linearVelocity.y);
-            dashTimeLeft -= Time.deltaTime;
-
-            if (Input.GetKeyDown(KeyCode.Space) && !jumpedAfterDash)
-            {
-                Jump();
-            }
-        }
-        else
-        {
-            isDashing = false;
-            // ChangeState(moveInput != 0 ? PlayerMovementState.Walk : PlayerMovementState.Idle);
-        }
+        jumpTimer = jumpDuration;
+        isJumping = true;
     }
 
-    void Jump()
+    public void DoubleJump()
     {
-        if (isGrounded || currentState == PlayerMovementState.Dash)
-        {
-            playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce);
-            // ChangeState(PlayerMovementState.Jump);
-        }
-        else if (!hasDoubleJumped && !jumpedAfterDash)
-        {
-            DoubleJump();
-        }
-    }
-
-    void DoubleJump()
-    {
-        playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce);
-
-        // if (!isDashing)ChangeState(PlayerMovementState.DoubleJump);
-
+        jumpTimer = jumpDuration;
+        isJumping = true;
         hasDoubleJumped = true;
     }
 
+    public void VariableJump()
+    {
+        if (Input.GetKey(KeyCode.Space) && isJumping)
+        {
+            if (jumpTimer > 0)
+            {
+                float moveInput = Input.GetAxisRaw("Horizontal");
+                playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce);
+                jumpTimer -= Time.deltaTime;
+            }
+            else
+            {
+                isJumping = false;
+            }
+        }
 
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isJumping = false;
+        }
+    }
 
-    void WallSlide()
+    public void Dash()
+    {
+        isDashing = true;
+        dashDirection = facingRight ? 1 : -1;
+
+        if(!isGrounded()) 
+        {
+            if (dashedAfterJump) return;
+            dashedAfterJump = true;
+        }
+        
+        if (dashCoroutine != null)
+        StopCoroutine(dashCoroutine);
+    
+        dashCoroutine = StartCoroutine(PerformDash());
+    }
+
+    private IEnumerator PerformDash()
+    {
+        isDashing = true;
+        float originalGravity = playerRb.gravityScale;
+        playerRb.gravityScale = 0;
+
+        playerRb.linearVelocity = new Vector2(dashDirection * dashForce,0);
+
+        yield return new WaitForSeconds(dashDuration);
+        playerRb.gravityScale = originalGravity;
+        isDashing = false;
+    }
+
+    public void WallSlide()
     {
         isWallSliding = true;
         playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, -wallSlideSpeed);
     }
 
-    void WallJump()
+    public void WallJump()
     {
         float jumpDir = -wallDirection;
-        playerRb.linearVelocity = new Vector2(jumpDir * wallJumpDistance, wallJumpForce);
+        playerRb.linearVelocity = new Vector2(jumpDir * jumpPower, jumpForce);
         hasDoubleJumped = false;
-        jumpedAfterDash = false;
+        // dashedAfterJump = false;
         // ChangeState(PlayerMovementState.Jump);
     }
 
-    void FlipCharacter()
+    void FlipCharacter(float moveInput)
     {
         if ((moveInput < 0 && facingRight) || (moveInput > 0 && !facingRight))
         {

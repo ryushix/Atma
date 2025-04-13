@@ -2,8 +2,32 @@ using UnityEngine;
 
 public class PlayerStateManager : MonoBehaviour
 {
+    public Animator animator;
+    public PlayerMovement2D playerMovement;
+
     PlayerBaseState currentState;
 
+    public PlayerIdleState idleState;
+    public PlayerMoveState moveState;
+    public PlayerJumpState jumpState;
+    public PlayerDoubleJumpState doubleJumpState;
+    // public PlayerWallJumpState wallJumpState;
+    public PlayerFallState fallState;
+    public PlayerDashState dashState;
+
+    void Awake()
+    {
+        playerMovement = GetComponent<PlayerMovement2D>();
+        animator = GetComponent<Animator>();
+
+        idleState = new PlayerIdleState(this);
+        moveState = new PlayerMoveState(this);
+        jumpState = new PlayerJumpState(this);
+        fallState = new PlayerFallState(this);
+        dashState = new PlayerDashState(this);
+        doubleJumpState = new PlayerDoubleJumpState(this);
+        // wallJumpState = new PlayerWallJumpState(this);
+    }
     void Start()
     {
         currentState = new PlayerIdleState(this);

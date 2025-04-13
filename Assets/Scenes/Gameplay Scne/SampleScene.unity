@@ -922,7 +922,7 @@ CompositeCollider2D:
   m_ColliderPaths: []
   m_CompositePaths:
     m_Paths: []
-  m_VertexDistance: 0.0005
+  m_VertexDistance: 0.2
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 944294050}
@@ -2984,9 +2984,10 @@ GameObject:
   - component: {fileID: 1189896261}
   - component: {fileID: 1189896260}
   - component: {fileID: 1189896259}
-  - component: {fileID: 1189896263}
-  - component: {fileID: 1189896265}
   - component: {fileID: 1189896264}
+  - component: {fileID: 1189896266}
+  - component: {fileID: 1189896268}
+  - component: {fileID: 1189896269}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -3042,8 +3043,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.36539543
+  m_UseAutoMass: 1
+  m_Mass: 0.33686948
   m_LinearDamping: 2
   m_AngularDamping: 0.05
   m_GravityScale: 3
@@ -3131,38 +3132,6 @@ Transform:
   - {fileID: 30223870}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1189896263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189896258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c3fac1f465fa404ca2287404c03f987, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1189896264}
-  facingRight: 1
-  moveSpeed: 4
-  jumpForce: 10
-  groundCheck: {fileID: 485942891}
-  leftWallCheck: {fileID: 833239844}
-  rightWallCheck: {fileID: 30223870}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  platformLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  wallJumpForce: 8
-  wallJumpPush: 5
-  wallSlideSpeed: 2
-  dashSpeed: 7
-  dashDuration: 0.5
-  highFrictionMaterial: {fileID: 6200000, guid: 53a253824fd826f49911eb2751e4eb99, type: 2}
-  lowFrictionMaterial: {fileID: 0}
 --- !u!95 &1189896264
 Animator:
   serializedVersion: 7
@@ -3185,7 +3154,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1189896265
+--- !u!114 &1189896266
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3194,10 +3163,86 @@ MonoBehaviour:
   m_GameObject: {fileID: 1189896258}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 012ba17bbcf8a794fbc8ff4fbbe8ade3, type: 3}
+  m_Script: {fileID: 11500000, guid: ed8f8079375fe284dbcb93ba0d60cef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentAttackState: 1
+  animator: {fileID: 1189896264}
+  playerMovement: {fileID: 1189896269}
+--- !u!114 &1189896268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189896258}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3fac1f465fa404ca2287404c03f987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  facingRight: 1
+  moveSpeed: 5
+  jumpForce: 10
+  groundCheck: {fileID: 485942891}
+  leftWallCheck: {fileID: 833239844}
+  rightWallCheck: {fileID: 30223870}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  wallJumpForce: 10
+  wallJumpPush: 5
+  wallSlideSpeed: 2
+  dashSpeed: 10
+  dashDuration: 0.5
+  highFrictionMaterial: {fileID: 6200000, guid: 53a253824fd826f49911eb2751e4eb99, type: 2}
+  lowFrictionMaterial: {fileID: 6200000, guid: 53a253824fd826f49911eb2751e4eb99, type: 2}
+--- !u!114 &1189896269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189896258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32852183e7ceb84daf6b7bc16cb293f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheck: {fileID: 0}
+  leftWallCheck: {fileID: 0}
+  rightWallCheck: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  facingRight: 1
+  moveSpeed: 4
+  hasDoubleJumped: 0
+  isTouchingWall: 0
+  jumpCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  wallDirection: 0
+  jumpForce: 7
+  jumpPower: 6
+  jumpDuration: 0.15
+  isWallSliding: 0
+  wallSlideSpeed: 2
+  isDashing: 0
+  dashedAfterJump: 0
+  dashDuration: 0.2
+  dashForce: 7
+  highFrictionMaterial: {fileID: 6200000, guid: 53a253824fd826f49911eb2751e4eb99, type: 2}
+  lowFrictionMaterial: {fileID: 0}
 --- !u!1 &1328199913
 GameObject:
   m_ObjectHideFlags: 0

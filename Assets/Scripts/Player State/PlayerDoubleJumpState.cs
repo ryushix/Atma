@@ -1,26 +1,23 @@
 using UnityEngine;
 
-public class PlayerJumpState : PlayerBaseState
+public class PlayerDoubleJumpState : PlayerBaseState
 {
-    public PlayerJumpState(PlayerStateManager manager) : base(manager) { }
+    public PlayerDoubleJumpState(PlayerStateManager manager) : base(manager) { }
     public override void EnterState()
     {
-        Debug.Log("Current State : Jump");
-        manager.playerMovement.Jump();
+        Debug.Log("Current State : DoubleJump");
+        manager.playerMovement.DoubleJump();
     }
 
     public override void UpdateState()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
         manager.playerMovement.VariableJump();
-        manager.playerMovement.MoveInAir(moveInput);
+        manager.playerMovement.MoveInAir(moveInput);        
+        
         if (manager.playerMovement.isFalling())
         {
             manager.SwitchState(manager.fallState);
-        }
-        if (Input.GetKeyDown(KeyCode.Space) && !manager.playerMovement.hasDoubleJumped)
-        {
-            manager.SwitchState(manager.doubleJumpState);
         }
         if (Input.GetKeyDown(KeyCode.LeftShift) && !manager.playerMovement.dashedAfterJump)
         {
