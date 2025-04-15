@@ -7,6 +7,7 @@ public class PlayerJumpState : PlayerBaseState
     {
         Debug.Log("Current State : Jump");
         manager.playerMovement.Jump();
+        manager.animator.Play("PlayerJump");
     }
 
     public override void UpdateState()

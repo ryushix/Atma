@@ -6,6 +6,7 @@ public class PlayerFallState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Current State : Fall");
+        manager.animator.Play("PlayerFall");
     }
 
     public override void UpdateState()

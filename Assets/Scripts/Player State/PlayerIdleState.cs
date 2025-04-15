@@ -6,19 +6,23 @@ public class PlayerIdleState : PlayerBaseState
     public PlayerIdleState(PlayerStateManager manager) : base(manager) { }
     public override void EnterState()
     {
-        manager.playerMovement.isDashing = false;
-        manager.playerMovement.dashedAfterJump = false;
-        manager.playerMovement.hasDoubleJumped = false;
-        
         manager.animator.Play("PlayerIdle");
         manager.playerMovement.StopMovement();
         Debug.Log("Current State : Idle");
+
+        manager.playerMovement.isDashing = false;
+        manager.playerMovement.dashedAfterJump = false;
+        manager.playerMovement.hasDoubleJumped = false;
     }
 
     public override void UpdateState()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
 
+        if (manager.playerMovement.isFalling())
+        {
+            manager.SwitchState(manager.fallState);
+        }
         if (Math.Abs(moveInput) > 0.1)
             manager.SwitchState(manager.moveState);
 

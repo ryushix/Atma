@@ -17,15 +17,23 @@ public class PlayerMoveState : PlayerBaseState
         float moveInput = Input.GetAxisRaw("Horizontal");
         manager.playerMovement.Move(moveInput);
 
+        if(manager.playerMovement.isFalling())
+        {
+            manager.SwitchState(manager.fallState);
+        }
         if (Mathf.Abs(moveInput) < 0.1f)
         {
             manager.SwitchState(manager.idleState);
         }
         if (Input.GetKeyDown(KeyCode.Space))
+        {
             manager.SwitchState(manager.jumpState);
+        }
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
             manager.SwitchState(manager.dashState);
+        }
     }
 
     public override void FixedUpdateState()
