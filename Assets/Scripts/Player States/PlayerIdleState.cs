@@ -6,9 +6,11 @@ public class PlayerIdleState : PlayerBaseState
     public PlayerIdleState(PlayerStateManager manager) : base(manager) { }
     public override void EnterState()
     {
+        Debug.Log("Current State : Idle");
+        
         manager.animator.Play("PlayerIdle");
         manager.playerMovement.StopMovement();
-        Debug.Log("Current State : Idle");
+        manager.playerMovement.SetHighFriction();
 
         manager.playerMovement.isDashing = false;
         manager.playerMovement.dashedAfterJump = false;

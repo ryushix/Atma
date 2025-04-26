@@ -44,8 +44,6 @@ public class PlayerMovement2D : MonoBehaviour
     private Coroutine dashCoroutine;
     [SerializeField]private float dashDuration = 0.2f;
     [SerializeField]private float dashForce = 7f;
-    
-
 
     [Header("Physics Material Settings")]
     public PhysicsMaterial2D highFrictionMaterial;
@@ -194,6 +192,22 @@ public class PlayerMovement2D : MonoBehaviour
             Vector2 playerScale = transform.localScale;
             playerScale.x *= -1;
             transform.localScale = playerScale;
+        }
+    }
+
+    public void SetHighFriction()
+    {
+        if (playerCollider != null)
+        {
+            playerCollider.sharedMaterial = highFrictionMaterial;
+        }
+    }
+
+    public void SetLowFriction()
+    {
+        if (playerCollider != null)
+        {
+            playerCollider.sharedMaterial = lowFrictionMaterial;
         }
     }
 }

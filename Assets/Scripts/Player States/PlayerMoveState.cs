@@ -7,9 +7,11 @@ public class PlayerMoveState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Current State : Move");
+
         manager.playerMovement.isDashing = false;
         manager.playerMovement.dashedAfterJump = false;
         manager.playerMovement.hasDoubleJumped = false;
+        manager.playerMovement.SetLowFriction();
     }
 
     public override void UpdateState()

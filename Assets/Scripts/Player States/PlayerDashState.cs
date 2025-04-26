@@ -6,7 +6,9 @@ public class PlayerDashState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Current State : Dash");
+
         manager.playerMovement.Dash();
+        manager.playerMovement.SetLowFriction();
     }
 
     public override void UpdateState()

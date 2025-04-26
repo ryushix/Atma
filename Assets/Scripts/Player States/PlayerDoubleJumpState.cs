@@ -6,8 +6,10 @@ public class PlayerDoubleJumpState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Current State : DoubleJump");
-        manager.playerMovement.DoubleJump();
+
         manager.animator.Play("PlayerJump");
+        manager.playerMovement.DoubleJump();
+        manager.playerMovement.SetLowFriction();
     }
 
     public override void UpdateState()

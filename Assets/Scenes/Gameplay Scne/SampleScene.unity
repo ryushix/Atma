@@ -3199,7 +3199,7 @@ MonoBehaviour:
   dashSpeed: 10
   dashDuration: 0.5
   highFrictionMaterial: {fileID: 6200000, guid: 53a253824fd826f49911eb2751e4eb99, type: 2}
-  lowFrictionMaterial: {fileID: 6200000, guid: 53a253824fd826f49911eb2751e4eb99, type: 2}
+  lowFrictionMaterial: {fileID: 6200000, guid: 26e7d410b6836d14ea5b55e819b1952b, type: 2}
 --- !u!114 &1189896269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3242,7 +3242,7 @@ MonoBehaviour:
   dashDuration: 0.2
   dashForce: 7
   highFrictionMaterial: {fileID: 6200000, guid: 53a253824fd826f49911eb2751e4eb99, type: 2}
-  lowFrictionMaterial: {fileID: 0}
+  lowFrictionMaterial: {fileID: 6200000, guid: 26e7d410b6836d14ea5b55e819b1952b, type: 2}
 --- !u!1 &1328199913
 GameObject:
   m_ObjectHideFlags: 0

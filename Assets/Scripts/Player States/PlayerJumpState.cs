@@ -6,8 +6,10 @@ public class PlayerJumpState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Current State : Jump");
+        
         manager.playerMovement.Jump();
         manager.animator.Play("PlayerJump");
+        manager.playerMovement.SetLowFriction();
     }
 
     public override void UpdateState()
