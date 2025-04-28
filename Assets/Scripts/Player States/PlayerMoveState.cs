@@ -24,6 +24,10 @@ public class PlayerMoveState : PlayerBaseState
         {
             manager.SwitchState(manager.fallState);
         }
+        if (manager.playerMovement.IsTouchingWall() && !manager.playerMovement.isGrounded())
+        {
+            manager.SwitchState(manager.wallSlideState);
+        }
         if (Mathf.Abs(moveInput) < 0.1f)
         {
             manager.SwitchState(manager.idleState);

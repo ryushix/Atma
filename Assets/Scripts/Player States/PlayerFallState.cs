@@ -22,6 +22,10 @@ public class PlayerFallState : PlayerBaseState
             else
                 manager.SwitchState(manager.idleState);
         }
+        if (manager.playerMovement.IsTouchingWall())
+        {
+            manager.SwitchState(manager.wallSlideState);
+        }
         if (Input.GetKeyDown(KeyCode.Space) && !manager.playerMovement.hasDoubleJumped)
         {
             manager.SwitchState(manager.doubleJumpState);

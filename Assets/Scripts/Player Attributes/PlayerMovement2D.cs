@@ -169,6 +169,17 @@ public class PlayerMovement2D : MonoBehaviour
         isDashing = false;
     }
 
+    public bool IsTouchingWall()
+    {
+        bool touchingLeftWall = Physics2D.OverlapCircle(leftWallCheck.position, 0.1f, groundLayer);
+        bool touchingRightWall = Physics2D.OverlapCircle(rightWallCheck.position, 0.1f, groundLayer);
+
+        isTouchingWall = touchingLeftWall || touchingRightWall;
+        wallDirection = touchingLeftWall ? -1 : touchingRightWall ? 1 : 0;
+
+        return isTouchingWall;
+    }
+
     public void WallSlide()
     {
         isWallSliding = true;
