@@ -18,6 +18,7 @@ public class PlayerMoveState : PlayerBaseState
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
         manager.playerMovement.Move(moveInput);
+        manager.playerMovement.TryDropPlatform();
 
         if(manager.playerMovement.isFalling())
         {
@@ -38,22 +39,4 @@ public class PlayerMoveState : PlayerBaseState
         }
     }
 
-    public override void FixedUpdateState()
-    {
-    //     if (manager.playerMovement.isGrounded)
-    //     {
-    //         if (Mathf.Abs(moveInput) < 0.01f && !isDashing)
-    //         {
-    //             managerplayerCollider.sharedMaterial = highFrictionMaterial;
-    //         }
-    //         else
-    //         {
-    //             playerCollider.sharedMaterial = lowFrictionMaterial;
-    //         }
-    //     }
-    //     else
-    //     {
-    //         playerCollider.sharedMaterial = lowFrictionMaterial;
-    //     }
-    }
 }

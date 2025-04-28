@@ -4,12 +4,12 @@ using UnityEngine;
 public class PlayerIdleState : PlayerBaseState
 {
     public PlayerIdleState(PlayerStateManager manager) : base(manager) { }
+    
     public override void EnterState()
     {
         Debug.Log("Current State : Idle");
         
         manager.animator.Play("PlayerIdle");
-        manager.playerMovement.StopMovement();
         manager.playerMovement.SetHighFriction();
 
         manager.playerMovement.isDashing = false;
@@ -20,6 +20,7 @@ public class PlayerIdleState : PlayerBaseState
     public override void UpdateState()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
+        manager.playerMovement.TryDropPlatform();
 
         if (manager.playerMovement.isFalling())
         {

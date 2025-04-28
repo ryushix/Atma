@@ -184,6 +184,31 @@ public class PlayerMovement2D : MonoBehaviour
         // ChangeState(PlayerMovementState.Jump);
     }
 
+    public void TryDropPlatform()
+    {
+        if (Input.GetKeyDown(KeyCode.S) && IsOnPlatform())
+        {
+            StartCoroutine(DisablePlatformCollision());
+        }
+    }
+
+
+    private bool IsOnPlatform()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.1f, platformLayer);
+    }
+
+    private IEnumerator DisablePlatformCollision()
+    {
+        Collider2D platform = Physics2D.OverlapCircle(groundCheck.position, 0.1f, platformLayer);
+        if (platform != null)
+        {
+            Physics2D.IgnoreCollision(playerCollider, platform, true);
+            yield return new WaitForSeconds(0.3f);
+            Physics2D.IgnoreCollision(playerCollider, platform, false);
+        }
+    }
+
     void FlipCharacter(float moveInput)
     {
         if ((moveInput < 0 && facingRight) || (moveInput > 0 && !facingRight))
