@@ -156,6 +156,24 @@ public class PlayerMovement2D : MonoBehaviour
         dashCoroutine = StartCoroutine(PerformDash());
     }
 
+    public void MoveDuringDash(float moveInput)
+    {
+        if (!isDashing) return; // Pastikan hanya saat Dash aktif
+
+        float moveDirection = moveInput;
+
+        if (Mathf.Abs(moveInput) < 0.1f)
+        {
+            // Jika tidak input, tetap gerak ke arah menghadap
+            moveDirection = facingRight ? 1 : -1;
+        }
+
+        playerRb.linearVelocity = new Vector2(moveDirection * dashForce, playerRb.linearVelocity.y);
+        FlipCharacter(moveDirection);
+    }
+
+
+
     private IEnumerator PerformDash()
     {
         isDashing = true;

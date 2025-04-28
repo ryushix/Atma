@@ -16,7 +16,12 @@ public class PlayerJumpState : PlayerBaseState
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
         manager.playerMovement.VariableJump();
-        manager.playerMovement.MoveInAir(moveInput);
+
+        if (!manager.playerMovement.isDashing)
+        {
+            manager.playerMovement.MoveInAir(moveInput);
+        }
+
         if (manager.playerMovement.isFalling())
         {
             manager.SwitchState(manager.fallState);
@@ -30,4 +35,5 @@ public class PlayerJumpState : PlayerBaseState
             manager.SwitchState(manager.dashState);
         }
     }
+
 }
