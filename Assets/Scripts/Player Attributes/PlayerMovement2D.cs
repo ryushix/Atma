@@ -108,6 +108,16 @@ public class PlayerMovement2D : MonoBehaviour
     {
         jumpTimer = jumpDuration;
         isJumping = true;
+
+        if (isDashing)
+        {
+            float dashMove = (Mathf.Abs(dashDirection) > 0) ? dashDirection : (facingRight ? 1 : -1);
+            playerRb.linearVelocity = new Vector2(dashMove * dashForce, jumpForce);
+        }
+        else
+        {
+            playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce);
+        }
     }
 
     public void DoubleJump()
@@ -115,6 +125,16 @@ public class PlayerMovement2D : MonoBehaviour
         jumpTimer = jumpDuration;
         isJumping = true;
         hasDoubleJumped = true;
+
+        if (isDashing)
+        {
+            float dashMove = (Mathf.Abs(dashDirection) > 0) ? dashDirection : (facingRight ? 1 : -1);
+            playerRb.linearVelocity = new Vector2(dashMove * dashForce, jumpForce);
+        }
+        else
+        {
+            playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce);
+        }
     }
 
     public void VariableJump()
@@ -141,19 +161,46 @@ public class PlayerMovement2D : MonoBehaviour
 
     public void Dash()
     {
+        if (!isGrounded() && dashedAfterJump)
+        {
+            return;
+        }
+
         isDashing = true;
         dashDirection = facingRight ? 1 : -1;
 
-        if(!isGrounded()) 
+        if (!isGrounded())
         {
-            if (dashedAfterJump) return;
             dashedAfterJump = true;
         }
         
         if (dashCoroutine != null)
-        StopCoroutine(dashCoroutine);
-    
-        dashCoroutine = StartCoroutine(PerformDash());
+            StopCoroutine(dashCoroutine);
+
+        dashCoroutine = StartCoroutine(PerformDash(isGrounded()));
+    }
+
+
+    private IEnumerator PerformDash(bool grounded)
+    {
+        isDashing = true;
+
+        float originalGravity = playerRb.gravityScale;
+
+        if (grounded)
+        {
+            playerRb.gravityScale = 0;
+        }
+
+        playerRb.linearVelocity = new Vector2(dashDirection * dashForce, playerRb.linearVelocity.y);
+
+        yield return new WaitForSeconds(dashDuration);
+
+        if (grounded)
+        {
+            playerRb.gravityScale = originalGravity;
+        }
+        isDashing = false;
     }
 
     public void MoveDuringDash(float moveInput)
@@ -169,21 +216,6 @@ public class PlayerMovement2D : MonoBehaviour
 
         playerRb.linearVelocity = new Vector2(moveDirection * dashForce, playerRb.linearVelocity.y);
         FlipCharacter(moveDirection);
-    }
-
-
-
-    private IEnumerator PerformDash()
-    {
-        isDashing = true;
-        float originalGravity = playerRb.gravityScale;
-        playerRb.gravityScale = 0;
-
-        playerRb.linearVelocity = new Vector2(dashDirection * dashForce,0);
-
-        yield return new WaitForSeconds(dashDuration);
-        playerRb.gravityScale = originalGravity;
-        isDashing = false;
     }
 
     public bool IsTouchingWall()
