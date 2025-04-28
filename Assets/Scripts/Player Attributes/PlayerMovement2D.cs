@@ -43,7 +43,7 @@ public class PlayerMovement2D : MonoBehaviour
     private float dashDirection;
     private Coroutine dashCoroutine;
     [SerializeField]private float dashDuration = 0.2f;
-    [SerializeField]private float dashForce = 7f;
+    [SerializeField]private float dashForce = 5f;
 
     [Header("Physics Material Settings")]
     public PhysicsMaterial2D highFrictionMaterial;
@@ -158,13 +158,12 @@ public class PlayerMovement2D : MonoBehaviour
 
     public void MoveDuringDash(float moveInput)
     {
-        if (!isDashing) return; // Pastikan hanya saat Dash aktif
+        if (!isDashing) return;
 
         float moveDirection = moveInput;
 
         if (Mathf.Abs(moveInput) < 0.1f)
         {
-            // Jika tidak input, tetap gerak ke arah menghadap
             moveDirection = facingRight ? 1 : -1;
         }
 
