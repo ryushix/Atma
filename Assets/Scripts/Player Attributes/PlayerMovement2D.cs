@@ -43,9 +43,7 @@ public class PlayerMovement2D : MonoBehaviour
     private float dashDirection;
     private Coroutine dashCoroutine;
     [SerializeField]private float dashDuration = 0.2f;
-    [SerializeField]private float dashForce = 7f;
-    
-
+    [SerializeField]private float dashForce = 5f;
 
     [Header("Physics Material Settings")]
     public PhysicsMaterial2D highFrictionMaterial;
@@ -110,6 +108,16 @@ public class PlayerMovement2D : MonoBehaviour
     {
         jumpTimer = jumpDuration;
         isJumping = true;
+
+        if (isDashing)
+        {
+            float dashMove = (Mathf.Abs(dashDirection) > 0) ? dashDirection : (facingRight ? 1 : -1);
+            playerRb.linearVelocity = new Vector2(dashMove * dashForce, jumpForce);
+        }
+        else
+        {
+            playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce);
+        }
     }
 
     public void DoubleJump()
@@ -117,6 +125,16 @@ public class PlayerMovement2D : MonoBehaviour
         jumpTimer = jumpDuration;
         isJumping = true;
         hasDoubleJumped = true;
+
+        if (isDashing)
+        {
+            float dashMove = (Mathf.Abs(dashDirection) > 0) ? dashDirection : (facingRight ? 1 : -1);
+            playerRb.linearVelocity = new Vector2(dashMove * dashForce, jumpForce);
+        }
+        else
+        {
+            playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce);
+        }
     }
 
     public void VariableJump()
@@ -143,32 +161,72 @@ public class PlayerMovement2D : MonoBehaviour
 
     public void Dash()
     {
+        if (!isGrounded() && dashedAfterJump)
+        {
+            return;
+        }
+
         isDashing = true;
         dashDirection = facingRight ? 1 : -1;
 
-        if(!isGrounded()) 
+        if (!isGrounded())
         {
-            if (dashedAfterJump) return;
             dashedAfterJump = true;
         }
         
         if (dashCoroutine != null)
-        StopCoroutine(dashCoroutine);
-    
-        dashCoroutine = StartCoroutine(PerformDash());
+            StopCoroutine(dashCoroutine);
+
+        dashCoroutine = StartCoroutine(PerformDash(isGrounded()));
     }
 
-    private IEnumerator PerformDash()
+
+    private IEnumerator PerformDash(bool grounded)
     {
         isDashing = true;
-        float originalGravity = playerRb.gravityScale;
-        playerRb.gravityScale = 0;
 
-        playerRb.linearVelocity = new Vector2(dashDirection * dashForce,0);
+        float originalGravity = playerRb.gravityScale;
+
+        if (grounded)
+        {
+            playerRb.gravityScale = 0;
+        }
+
+        playerRb.linearVelocity = new Vector2(dashDirection * dashForce, playerRb.linearVelocity.y);
 
         yield return new WaitForSeconds(dashDuration);
-        playerRb.gravityScale = originalGravity;
+
+        if (grounded)
+        {
+            playerRb.gravityScale = originalGravity;
+        }
         isDashing = false;
+    }
+
+    public void MoveDuringDash(float moveInput)
+    {
+        if (!isDashing) return;
+
+        float moveDirection = moveInput;
+
+        if (Mathf.Abs(moveInput) < 0.1f)
+        {
+            moveDirection = facingRight ? 1 : -1;
+        }
+
+        playerRb.linearVelocity = new Vector2(moveDirection * dashForce, playerRb.linearVelocity.y);
+        FlipCharacter(moveDirection);
+    }
+
+    public bool IsTouchingWall()
+    {
+        bool touchingLeftWall = Physics2D.OverlapCircle(leftWallCheck.position, 0.1f, groundLayer);
+        bool touchingRightWall = Physics2D.OverlapCircle(rightWallCheck.position, 0.1f, groundLayer);
+
+        isTouchingWall = touchingLeftWall || touchingRightWall;
+        wallDirection = touchingLeftWall ? -1 : touchingRightWall ? 1 : 0;
+
+        return isTouchingWall;
     }
 
     public void WallSlide()
@@ -186,6 +244,31 @@ public class PlayerMovement2D : MonoBehaviour
         // ChangeState(PlayerMovementState.Jump);
     }
 
+    public void TryDropPlatform()
+    {
+        if (Input.GetKeyDown(KeyCode.S) && IsOnPlatform())
+        {
+            StartCoroutine(DisablePlatformCollision());
+        }
+    }
+
+
+    private bool IsOnPlatform()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.1f, platformLayer);
+    }
+
+    private IEnumerator DisablePlatformCollision()
+    {
+        Collider2D platform = Physics2D.OverlapCircle(groundCheck.position, 0.1f, platformLayer);
+        if (platform != null)
+        {
+            Physics2D.IgnoreCollision(playerCollider, platform, true);
+            yield return new WaitForSeconds(0.3f);
+            Physics2D.IgnoreCollision(playerCollider, platform, false);
+        }
+    }
+
     void FlipCharacter(float moveInput)
     {
         if ((moveInput < 0 && facingRight) || (moveInput > 0 && !facingRight))
@@ -194,6 +277,22 @@ public class PlayerMovement2D : MonoBehaviour
             Vector2 playerScale = transform.localScale;
             playerScale.x *= -1;
             transform.localScale = playerScale;
+        }
+    }
+
+    public void SetHighFriction()
+    {
+        if (playerCollider != null)
+        {
+            playerCollider.sharedMaterial = highFrictionMaterial;
+        }
+    }
+
+    public void SetLowFriction()
+    {
+        if (playerCollider != null)
+        {
+            playerCollider.sharedMaterial = lowFrictionMaterial;
         }
     }
 }

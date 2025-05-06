@@ -14,6 +14,8 @@ public class PlayerStateManager : MonoBehaviour
     // public PlayerWallJumpState wallJumpState;
     public PlayerFallState fallState;
     public PlayerDashState dashState;
+    public PlayerWallSlideState wallSlideState;
+
 
     void Awake()
     {
@@ -26,6 +28,7 @@ public class PlayerStateManager : MonoBehaviour
         fallState = new PlayerFallState(this);
         dashState = new PlayerDashState(this);
         doubleJumpState = new PlayerDoubleJumpState(this);
+        wallSlideState = new PlayerWallSlideState(this);
         // wallJumpState = new PlayerWallJumpState(this);
     }
     void Start()

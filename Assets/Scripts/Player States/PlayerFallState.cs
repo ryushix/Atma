@@ -6,7 +6,9 @@ public class PlayerFallState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Current State : Fall");
+        
         manager.animator.Play("PlayerFall");
+        manager.playerMovement.SetLowFriction();
     }
 
     public override void UpdateState()
@@ -19,6 +21,10 @@ public class PlayerFallState : PlayerBaseState
                 manager.SwitchState(manager.moveState);
             else
                 manager.SwitchState(manager.idleState);
+        }
+        if (manager.playerMovement.IsTouchingWall())
+        {
+            manager.SwitchState(manager.wallSlideState);
         }
         if (Input.GetKeyDown(KeyCode.Space) && !manager.playerMovement.hasDoubleJumped)
         {

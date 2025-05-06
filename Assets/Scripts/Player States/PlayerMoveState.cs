@@ -7,19 +7,26 @@ public class PlayerMoveState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Current State : Move");
+
         manager.playerMovement.isDashing = false;
         manager.playerMovement.dashedAfterJump = false;
         manager.playerMovement.hasDoubleJumped = false;
+        manager.playerMovement.SetLowFriction();
     }
 
     public override void UpdateState()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
         manager.playerMovement.Move(moveInput);
+        manager.playerMovement.TryDropPlatform();
 
         if(manager.playerMovement.isFalling())
         {
             manager.SwitchState(manager.fallState);
+        }
+        if (manager.playerMovement.IsTouchingWall() && !manager.playerMovement.isGrounded())
+        {
+            manager.SwitchState(manager.wallSlideState);
         }
         if (Mathf.Abs(moveInput) < 0.1f)
         {
@@ -36,22 +43,4 @@ public class PlayerMoveState : PlayerBaseState
         }
     }
 
-    public override void FixedUpdateState()
-    {
-    //     if (manager.playerMovement.isGrounded)
-    //     {
-    //         if (Mathf.Abs(moveInput) < 0.01f && !isDashing)
-    //         {
-    //             managerplayerCollider.sharedMaterial = highFrictionMaterial;
-    //         }
-    //         else
-    //         {
-    //             playerCollider.sharedMaterial = lowFrictionMaterial;
-    //         }
-    //     }
-    //     else
-    //     {
-    //         playerCollider.sharedMaterial = lowFrictionMaterial;
-    //     }
-    }
 }
