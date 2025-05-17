@@ -2984,7 +2984,6 @@ GameObject:
   - component: {fileID: 1189896259}
   - component: {fileID: 1189896264}
   - component: {fileID: 1189896266}
-  - component: {fileID: 1189896268}
   - component: {fileID: 1189896269}
   m_Layer: 3
   m_Name: Player
@@ -3165,50 +3164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1189896264}
-  playerMovement: {fileID: 1189896268}
---- !u!114 &1189896268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189896258}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c3fac1f465fa404ca2287404c03f987, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundCheck: {fileID: 485942891}
-  leftWallCheck: {fileID: 833239844}
-  rightWallCheck: {fileID: 30223870}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  platformLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  facingRight: 1
-  moveSpeed: 5
-  hasDoubleJumped: 0
-  isTouchingWall: 0
-  jumpCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  wallDirection: 0
-  jumpForce: 10
-  jumpPower: 6
-  jumpDuration: 0.15
-  isWallSliding: 0
-  wallSlideSpeed: 2
-  isDashing: 0
-  dashedAfterJump: 0
-  dashDuration: 0.5
-  dashForce: 7
-  highFrictionMaterial: {fileID: 6200000, guid: 53a253824fd826f49911eb2751e4eb99, type: 2}
-  lowFrictionMaterial: {fileID: 6200000, guid: 26e7d410b6836d14ea5b55e819b1952b, type: 2}
+  playerMovement: {fileID: 0}
 --- !u!114 &1189896269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3218,7 +3174,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1189896258}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76804578e57d8674684c455f4fed0fc2, type: 3}
+  m_Script: {fileID: 11500000, guid: a32852183e7ceb84daf6b7bc16cb293f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 0}
@@ -3249,7 +3205,7 @@ MonoBehaviour:
   isDashing: 0
   dashedAfterJump: 0
   dashDuration: 0.2
-  dashForce: 5
+  dashForce: 7
   highFrictionMaterial: {fileID: 6200000, guid: 53a253824fd826f49911eb2751e4eb99, type: 2}
   lowFrictionMaterial: {fileID: 6200000, guid: 26e7d410b6836d14ea5b55e819b1952b, type: 2}
 --- !u!1 &1328199913
