@@ -186,18 +186,15 @@ public class PlayerMovement : MonoBehaviour
 
         float originalGravity = playerRb.gravityScale;
 
-        // Gunakan gravity kecil di udara untuk memberikan efek sedikit "melayang" (opsional)
         if (!grounded)
         {
-            playerRb.gravityScale = originalGravity * 0.5f;  // Bisa tweak angka 0.5f ini
+            playerRb.gravityScale = originalGravity * 0.5f;
         }
 
-        // Gerak horizontal tetap, vertikal biarkan berjalan natural
         playerRb.linearVelocity = new Vector2(dashDirection * dashForce, playerRb.linearVelocity.y);
 
         yield return new WaitForSeconds(dashDuration);
 
-        // Kembalikan gravitasi normal
         playerRb.gravityScale = originalGravity;
         isDashing = false;
     }
