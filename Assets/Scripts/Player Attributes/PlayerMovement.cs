@@ -180,28 +180,28 @@ public class PlayerMovement : MonoBehaviour
         dashCoroutine = StartCoroutine(PerformDash(isGrounded()));
     }
 
-
     private IEnumerator PerformDash(bool grounded)
     {
         isDashing = true;
 
         float originalGravity = playerRb.gravityScale;
 
-        if (grounded)
+        // Gunakan gravity kecil di udara untuk memberikan efek sedikit "melayang" (opsional)
+        if (!grounded)
         {
-            playerRb.gravityScale = 0;
+            playerRb.gravityScale = originalGravity * 0.5f;  // Bisa tweak angka 0.5f ini
         }
 
+        // Gerak horizontal tetap, vertikal biarkan berjalan natural
         playerRb.linearVelocity = new Vector2(dashDirection * dashForce, playerRb.linearVelocity.y);
 
         yield return new WaitForSeconds(dashDuration);
 
-        if (grounded)
-        {
-            playerRb.gravityScale = originalGravity;
-        }
+        // Kembalikan gravitasi normal
+        playerRb.gravityScale = originalGravity;
         isDashing = false;
     }
+
 
     public void MoveDuringDash(float moveInput)
     {
