@@ -3,7 +3,7 @@ using NUnit.Framework;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerMovement2D : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D playerRb;
     private Animator playerAnim;

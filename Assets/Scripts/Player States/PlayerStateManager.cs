@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerStateManager : MonoBehaviour
 {
     public Animator animator;
-    public PlayerMovement2D playerMovement;
+    public PlayerMovement playerMovement;
 
     PlayerBaseState currentState;
 
@@ -18,7 +18,7 @@ public class PlayerStateManager : MonoBehaviour
 
     void Awake()
     {
-        playerMovement = GetComponent<PlayerMovement2D>();
+        playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
 
         idleState = new PlayerIdleState(this);
