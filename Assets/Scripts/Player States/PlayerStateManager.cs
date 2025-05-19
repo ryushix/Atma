@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerStateManager : MonoBehaviour
 {
     public Animator animator;
-    public PlayerMovement2D playerMovement;
+    public PlayerMovement playerMovement;
 
     PlayerBaseState currentState;
 
@@ -11,7 +11,6 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerMoveState moveState;
     public PlayerJumpState jumpState;
     public PlayerDoubleJumpState doubleJumpState;
-    // public PlayerWallJumpState wallJumpState;
     public PlayerFallState fallState;
     public PlayerDashState dashState;
     public PlayerWallSlideState wallSlideState;
@@ -19,7 +18,7 @@ public class PlayerStateManager : MonoBehaviour
 
     void Awake()
     {
-        playerMovement = GetComponent<PlayerMovement2D>();
+        playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
 
         idleState = new PlayerIdleState(this);
@@ -29,7 +28,6 @@ public class PlayerStateManager : MonoBehaviour
         dashState = new PlayerDashState(this);
         doubleJumpState = new PlayerDoubleJumpState(this);
         wallSlideState = new PlayerWallSlideState(this);
-        // wallJumpState = new PlayerWallJumpState(this);
     }
     void Start()
     {
