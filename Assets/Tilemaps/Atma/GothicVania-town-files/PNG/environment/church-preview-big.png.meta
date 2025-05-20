@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      church-preview-big_0: -927729207130493805
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

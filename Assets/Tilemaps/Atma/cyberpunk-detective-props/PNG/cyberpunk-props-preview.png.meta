@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cyberpunk-props-preview_0: -1581319738890571391
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -19,6 +19,7 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void UpdateState()
     {
+        Debug.Log(manager.playerMovement.isGrounded());
         float moveInput = Input.GetAxisRaw("Horizontal");
         manager.playerMovement.TryDropPlatform();
 

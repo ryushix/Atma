@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      wood-legs_0: 837826278653364405
+      wood-legs_1: -5961418905051218111
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      player-duck_0: 6678243968058416384
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

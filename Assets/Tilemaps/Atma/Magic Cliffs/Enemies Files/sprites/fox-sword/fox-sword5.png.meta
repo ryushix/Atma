@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fox-sword5_0: 4092526833877517221
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

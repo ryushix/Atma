@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      stairs-mirror-right_0: -2697389612198404294
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

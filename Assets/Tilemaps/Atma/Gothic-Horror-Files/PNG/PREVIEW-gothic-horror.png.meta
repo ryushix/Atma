@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PREVIEW-gothic-horror_0: 8482119090307975261
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

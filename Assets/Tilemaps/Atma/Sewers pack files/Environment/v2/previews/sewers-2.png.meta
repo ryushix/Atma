@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sewers-2_0: 5443099805129497537
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

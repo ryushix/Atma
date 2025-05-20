@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bearded-walk-1_0: 4676601844032197774
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

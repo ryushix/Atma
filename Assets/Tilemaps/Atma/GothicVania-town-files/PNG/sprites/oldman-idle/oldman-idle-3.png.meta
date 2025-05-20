@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      oldman-idle-3_0: 2120909699105258436
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

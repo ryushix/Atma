@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      player-cling_0: -2205860082256992112
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      player-shoot-up_0: 3079064449056705694
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

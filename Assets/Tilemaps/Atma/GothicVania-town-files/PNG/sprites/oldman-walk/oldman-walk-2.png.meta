@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      oldman-walk-2_0: -6271998558422568852
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

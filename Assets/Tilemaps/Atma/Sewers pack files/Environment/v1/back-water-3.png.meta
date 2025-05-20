@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      back-water-3_0: -3590821487463384706
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -15,8 +15,9 @@ public class PlayerFallState : PlayerBaseState
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
         manager.playerMovement.MoveInAir(moveInput);
+        Debug.Log(manager.playerMovement.isGrounded());
         if (manager.playerMovement.isGrounded())
-        {            
+        {
             if (Mathf.Abs(moveInput) > 0.1f)
                 manager.SwitchState(manager.moveState);
             else

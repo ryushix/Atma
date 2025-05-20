@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hanging-terminal_0: 817022888922811274
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

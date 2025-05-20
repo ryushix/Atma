@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cryo-pod_0: 4986895348847021021
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

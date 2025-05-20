@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bearded-idle-1_0: 7095889761123657688
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

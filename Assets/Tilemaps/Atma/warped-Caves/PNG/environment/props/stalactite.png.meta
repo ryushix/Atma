@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      stalactite_0: 9012346488802340978
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      jumper-idle_0: -2641295596324315248
+      jumper-idle_1: -6110443837878439476
+      jumper-idle_2: 1622845869197021768
+      jumper-idle_3: -1910116826507548020
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

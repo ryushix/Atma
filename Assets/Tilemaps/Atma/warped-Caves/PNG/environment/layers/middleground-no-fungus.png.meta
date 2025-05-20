@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      middleground-no-fungus_0: 8896800579920787650
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

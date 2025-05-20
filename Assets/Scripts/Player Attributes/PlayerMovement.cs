@@ -20,15 +20,14 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement Settings")]
     [SerializeField] private bool facingRight = true;
-    public float moveSpeed = 4f;
+    public float moveSpeed = 7f;
 
     [Header("Jump Settings")]
     public bool hasDoubleJumped;
     public bool isTouchingWall;
-    public AnimationCurve jumpCurve;
     [SerializeField] private int wallDirection;
-    [SerializeField] private float jumpForce = 7f;
-    [SerializeField] private float jumpPower = 6f;
+    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float jumpPower = 8f;
     public float jumpDuration = 0.15f;
     private float jumpTimer;
     private bool isJumping;
@@ -42,8 +41,8 @@ public class PlayerMovement : MonoBehaviour
     public bool dashedAfterJump;
     private float dashDirection;
     private Coroutine dashCoroutine;
-    [SerializeField]private float dashDuration = 0.2f;
-    [SerializeField]private float dashForce = 5f;
+    [SerializeField]private float dashDuration = 0.5f;
+    [SerializeField]private float dashForce = 15f;
 
     [Header("Physics Material Settings")]
     public PhysicsMaterial2D highFrictionMaterial;
@@ -83,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isFalling()
     {
-        return playerRb.linearVelocity.y < -0.1f;
+        return playerRb.linearVelocity.y < -1f;
 
     }
     public void Move(float moveInput)

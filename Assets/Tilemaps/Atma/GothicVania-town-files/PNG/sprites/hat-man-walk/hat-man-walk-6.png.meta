@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hat-man-walk-6_0: 2576596403240067946
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
