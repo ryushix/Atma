@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Gameplay Scene/Main Menu.unity
-    guid: f6b5618c5d1f45d4c8c99332ea11e5c5
+    path: Assets/Scenes/Gameplay Scene/Level1_Prolog 1.unity
+    guid: 9225b1d74dfdbd744917c427787552d2
   - enabled: 1
-    path: Assets/Scenes/Gameplay Scene/Level 1.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Gameplay Scene/Interior.unity
+    guid: 24e6ce66a3031854fbf82891219f33c7
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
