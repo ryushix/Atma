@@ -20,6 +20,7 @@ public class PlayerStateManager : MonoBehaviour
     {
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
+        playerRb = GetComponent<Rigidbody2D>();
 
         idleState = new PlayerIdleState(this);
         moveState = new PlayerMoveState(this);
@@ -40,7 +41,7 @@ public class PlayerStateManager : MonoBehaviour
         currentState.UpdateState();
     }
 
-    void FxedUpdate()
+    void FixedUpdate()
     {
         currentState.FixedUpdateState();
     }

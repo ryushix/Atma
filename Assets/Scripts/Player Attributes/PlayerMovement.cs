@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
     public void Move(float moveInput)
     {
         playerRb.linearVelocity = new Vector2(moveInput * moveSpeed, playerRb.linearVelocity.y);
-        playerAnim.Play("PlayerRun");
+        playerAnim.Play("PlayerRun_Stump");
         FlipCharacter(moveInput);
     }
 

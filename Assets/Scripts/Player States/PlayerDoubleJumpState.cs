@@ -7,7 +7,7 @@ public class PlayerDoubleJumpState : PlayerBaseState
     {
         Debug.Log("Current State : DoubleJump");
 
-        manager.animator.Play("PlayerJump");
+        manager.animator.Play("PlayerJump_Handed");
         manager.playerMovement.DoubleJump();
         manager.playerMovement.SetLowFriction();
     }

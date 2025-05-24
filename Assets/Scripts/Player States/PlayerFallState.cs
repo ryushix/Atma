@@ -7,7 +7,7 @@ public class PlayerFallState : PlayerBaseState
     {
         Debug.Log("Current State : Fall");
         
-        manager.animator.Play("PlayerFall");
+        manager.animator.Play("PlayerFall_Handed");
         manager.playerMovement.SetLowFriction();
     }
 
