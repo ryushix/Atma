@@ -6,6 +6,7 @@ public class PlayerFallState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Current State : Fall");
+        manager.playerRB.gravityScale = 3f;
         
         manager.animator.Play("PlayerFall");
         manager.playerMovement.SetLowFriction();

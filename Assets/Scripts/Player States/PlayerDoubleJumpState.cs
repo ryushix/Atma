@@ -6,6 +6,7 @@ public class PlayerDoubleJumpState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Current State : DoubleJump");
+        manager.playerRB.gravityScale = 3f;
 
         manager.animator.Play("PlayerJump");
         manager.playerMovement.DoubleJump();

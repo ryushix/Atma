@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isFalling()
     {
-        return playerRb.linearVelocity.y < -1f;
+        return playerRb.linearVelocity.y < -1f && !isGrounded();
 
     }
     public void Move(float moveInput)

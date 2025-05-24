@@ -8,7 +8,7 @@ public class PlayerIdleState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Current State : Idle");
-        
+        manager.playerRB.gravityScale = 10f;
         manager.animator.Play("PlayerIdle");
         manager.playerMovement.SetHighFriction();
 

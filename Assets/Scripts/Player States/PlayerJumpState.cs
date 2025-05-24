@@ -6,6 +6,7 @@ public class PlayerJumpState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Current State : Jump");
+        manager.playerRB.gravityScale = 3f;
         
         manager.playerMovement.Jump();
         manager.animator.Play("PlayerJump");

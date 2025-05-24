@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      elisa-spritesheet1_0: 8532549410338743473
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

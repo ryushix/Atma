@@ -4,7 +4,7 @@ public class PlayerStateManager : MonoBehaviour
 {
     public Animator animator;
     public PlayerMovement playerMovement;
-
+    public Rigidbody2D playerRB;
     PlayerBaseState currentState;
 
     public PlayerIdleState idleState;
@@ -20,6 +20,7 @@ public class PlayerStateManager : MonoBehaviour
     {
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
+        playerRB = GetComponent<Rigidbody2D>();
 
         idleState = new PlayerIdleState(this);
         moveState = new PlayerMoveState(this);
