@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2ac2460706f15584dbcdaabc1980aaaf
+guid: 55d9f9f62cc543b4caeca727c4caebcb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7341407202210888751
-    second: door_0
+      213: 3751427952096090796
+    second: vecteezy_wooden-door-pixel_10462550-removebg-preview_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,6 +96,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD
   - serializedVersion: 4
     buildTarget: WindowsStoreApps
     maxTextureSize: 2048
@@ -109,11 +110,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+=======
+>>>>>>> merge
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+<<<<<<< HEAD
       name: door_0
+=======
+      name: vecteezy_wooden-door-pixel_10462550-removebg-preview_0
+>>>>>>> merge
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +135,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
+<<<<<<< HEAD
       spriteID: 1d3c9b8cb051e1a90800000000000000
       internalID: -7341407202210888751
+=======
+      spriteID: caa9825b8dfbf0430800000000000000
+      internalID: 3751427952096090796
+>>>>>>> merge
       vertices: []
       indices: 
       edges: []
@@ -147,7 +159,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
+<<<<<<< HEAD
     nameFileIdTable: {}
+=======
+    nameFileIdTable:
+      vecteezy_wooden-door-pixel_10462550-removebg-preview_0: 3751427952096090796
+>>>>>>> merge
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

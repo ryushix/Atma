@@ -16,8 +16,6 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask platformLayer;
 
-    private PlayerMovementState currentState;
-
     [Header("Movement Settings")]
     [SerializeField] private bool facingRight = true;
     public float moveSpeed = 7f;
@@ -82,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isFalling()
     {
-        return playerRb.linearVelocity.y < -1f;
+        return playerRb.linearVelocity.y < -1f && !isGrounded();
 
     }
     public void Move(float moveInput)

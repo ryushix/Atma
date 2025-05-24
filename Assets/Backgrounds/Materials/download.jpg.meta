@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: d4ea505928759b145a1022aadc1d5bb0
+guid: 20894e38ac9c5314dbb8b64bfc40347e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5966621866309598838
-    second: Fall_0
-  - first:
-      213: -2069157278089061004
-    second: Fall_1
-  - first:
-      213: 6596617931644657277
-    second: Fall_2
+      213: 3573036208370857778
+    second: download_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -102,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fall_0
+      name: download_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 29
-        height: 44
+        width: 214
+        height: 148
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a81c98d660d423da0800000000000000
-      internalID: -5966621866309598838
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fall_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 30
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 47d561f1b60e843e0800000000000000
-      internalID: -2069157278089061004
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fall_2
-      rect:
-        serializedVersion: 2
-        x: 67
-        y: 0
-        width: 23
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d7ed6a6fe05eb8b50800000000000000
-      internalID: 6596617931644657277
+      spriteID: 237bd813089f59130800000000000000
+      internalID: 3573036208370857778
       vertices: []
       indices: 
       edges: []
@@ -198,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fall_0: -5966621866309598838
-      Fall_1: -2069157278089061004
-      Fall_2: 6596617931644657277
+      download_0: 3573036208370857778
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

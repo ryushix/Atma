@@ -7,6 +7,7 @@ public class PlayerDashState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Current State : Dash");
+        manager.playerRB.gravityScale = 3f;
 
         manager.playerMovement.Dash();
         manager.playerMovement.SetLowFriction();

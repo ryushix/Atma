@@ -347,7 +347,16 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tilesetOpenGame_0: -220352176924430794
+      tilesetOpenGame_1: -9092877109056754715
+      tilesetOpenGame_2: -4966102513344384272
+      tilesetOpenGame_3: -5438760988447494808
+      tilesetOpenGame_4: 2670441789632731698
+      tilesetOpenGame_5: -3279283878218921664
+      tilesetOpenGame_6: 2665632686403809361
+      tilesetOpenGame_7: -2613355401159301609
+      tilesetOpenGame_8: 2360391555242838948
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
