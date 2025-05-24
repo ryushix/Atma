@@ -182,7 +182,11 @@ PrefabInstance:
     - target: {fileID: 3685513160357166695, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
       propertyPath: playerMovement
       value: 
-      objectReference: {fileID: 1027522042}
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954941657653073039, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 1027522053}
     - target: {fileID: 9050859619207510924, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
       propertyPath: dashForce
       value: 15
@@ -223,10 +227,14 @@ PrefabInstance:
       propertyPath: platformLayer.m_Bits
       value: 128
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9050859619207510924, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2085232129798265164, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1027522053}
   m_SourcePrefab: {fileID: 100100000, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
 --- !u!1 &219597274
 GameObject:
@@ -361,6 +369,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233353826}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &236598964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2085232129798265164, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
+  m_PrefabInstance: {fileID: 51085624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &362402387 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6335798297723089119, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
@@ -436,7 +449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1ba1096155beb4da9935ff035b877b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attributes: {fileID: 409041036}
 --- !u!114 &409041036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,10 +461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957eb06105903ce4bbfeae35e0a6e3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 409041037}
-  animator: {fileID: 0}
-  config: {fileID: 0}
-  patrolPoints: []
 --- !u!50 &409041037
 Rigidbody2D:
   serializedVersion: 5
@@ -19765,17 +19773,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2344201724620543720, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
   m_PrefabInstance: {fileID: 51085624}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1027522042 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9050859619207510924, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
-  m_PrefabInstance: {fileID: 51085624}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a32852183e7ceb84daf6b7bc16cb293f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1027522044 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6176248861567418387, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
@@ -19786,6 +19783,43 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 3605033867370831181, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
   m_PrefabInstance: {fileID: 51085624}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1027522053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236598964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9403309b139e4498c4be6f111ee5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheck: {fileID: 653635775}
+  leftWallCheck: {fileID: 362402387}
+  rightWallCheck: {fileID: 1263271251}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  facingRight: 1
+  moveSpeed: 7
+  hasDoubleJumped: 0
+  isTouchingWall: 0
+  wallDirection: 0
+  jumpForce: 10
+  jumpPower: 8
+  jumpDuration: 0.15
+  isWallSliding: 0
+  wallSlideSpeed: 2
+  isDashing: 0
+  dashedAfterJump: 0
+  dashDuration: 0.25
+  dashForce: 30
+  highFrictionMaterial: {fileID: 6200000, guid: 53a253824fd826f49911eb2751e4eb99, type: 2}
+  lowFrictionMaterial: {fileID: 6200000, guid: 26e7d410b6836d14ea5b55e819b1952b, type: 2}
 --- !u!1001 &1141092495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20740,11 +20774,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3235133101155482495, guid: d3ad8bb921f0a4044b78243c621cbbc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.727766
+      value: -2.7269988
       objectReference: {fileID: 0}
     - target: {fileID: 3235133101155482495, guid: d3ad8bb921f0a4044b78243c621cbbc4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9558399
+      value: 1.95594
       objectReference: {fileID: 0}
     - target: {fileID: 3235133101155482495, guid: d3ad8bb921f0a4044b78243c621cbbc4, type: 3}
       propertyPath: m_LocalPosition.z
