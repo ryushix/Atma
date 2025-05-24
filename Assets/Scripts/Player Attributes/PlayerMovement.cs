@@ -16,8 +16,6 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask platformLayer;
 
-    private PlayerMovementState currentState;
-
     [Header("Movement Settings")]
     [SerializeField] private bool facingRight = true;
     public float moveSpeed = 7f;
