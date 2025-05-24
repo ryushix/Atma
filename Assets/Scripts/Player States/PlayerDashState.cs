@@ -17,8 +17,7 @@ public class PlayerDashState : PlayerBaseState
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
 
-        manager.playerMovement.MoveDuringDash(moveInput);
-
+        // manager.playerMovement.MoveDuringDash(moveInput);
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (manager.playerMovement.isGrounded())

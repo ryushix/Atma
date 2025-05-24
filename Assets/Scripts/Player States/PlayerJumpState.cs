@@ -9,7 +9,7 @@ public class PlayerJumpState : PlayerBaseState
         manager.playerRB.gravityScale = 3f;
         
         manager.playerMovement.Jump();
-        manager.animator.Play("PlayerJump_Handed");
+        manager.animator.Play("PlayerJump_Stump");
         manager.playerMovement.SetLowFriction();
     }
 

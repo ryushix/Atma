@@ -8,7 +8,7 @@ public class PlayerDoubleJumpState : PlayerBaseState
         Debug.Log("Current State : DoubleJump");
         manager.playerRB.gravityScale = 3f;
 
-        manager.animator.Play("PlayerJump_Handed");
+        manager.animator.Play("PlayerJump_Stump");
         manager.playerMovement.DoubleJump();
         manager.playerMovement.SetLowFriction();
     }

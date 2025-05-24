@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 55d9f9f62cc543b4caeca727c4caebcb
+guid: fb43abf798c2a8547a8614ec8e579128
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3751427952096090796
-    second: vecteezy_wooden-door-pixel_10462550-removebg-preview_0
+      213: 7783898617310107294
+    second: Jump_Stump_0
+  - first:
+      213: -3941567556967846231
+    second: Jump_Stump_1
+  - first:
+      213: 8940520729007109650
+    second: Jump_Stump_2
+  - first:
+      213: -1186248226228744138
+    second: Jump_Stump_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,23 +122,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: door_0
+      name: Jump_Stump_0
       rect:
         serializedVersion: 2
-        x: 90
-        y: 57
-        width: 270
-        height: 446
+        x: 0
+        y: 0
+        width: 28
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: cd3cbc968012d574ca53cf7dee51d7ad
-      internalID: -98439434
+      spriteID: e965c643d86f50c60800000000000000
+      internalID: 7783898617310107294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_Stump_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 28
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ae2ab4b03dbc49c0800000000000000
+      internalID: -3941567556967846231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_Stump_2
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2163c7feb3c131c70800000000000000
+      internalID: 8940520729007109650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_Stump_3
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 0
+        width: 30
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 630d234f589998fe0800000000000000
+      internalID: -1186248226228744138
       vertices: []
       indices: 
       edges: []
@@ -138,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 04b42f9aa8ca8e443b26ef139f83b323
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -147,8 +222,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      door_0: -98439434
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

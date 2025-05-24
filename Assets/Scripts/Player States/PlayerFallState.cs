@@ -8,7 +8,7 @@ public class PlayerFallState : PlayerBaseState
         Debug.Log("Current State : Fall");
         manager.playerRB.gravityScale = 3f;
         
-        manager.animator.Play("PlayerFall_Handed");
+        manager.animator.Play("PlayerFall_Stump");
         manager.playerMovement.SetLowFriction();
     }
 

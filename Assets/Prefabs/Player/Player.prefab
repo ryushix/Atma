@@ -84,12 +84,12 @@ SpriteRenderer:
   m_SortingLayerID: -1187041913
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4723107735738678597, guid: 8fca0cfabeae45542bd61e35a97e73aa, type: 3}
+  m_Sprite: {fileID: -2938214760694349928, guid: c9c5521348b616d4197824071b0acc4b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.6041667, y: 1.0208334}
+  m_Size: {x: 1.25, y: 3.0625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -195,6 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 6176248861567418387}
   playerMovement: {fileID: 9050859619207510924}
+  playerRB: {fileID: 3605033867370831181}
 --- !u!114 &9050859619207510924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,8 +229,8 @@ MonoBehaviour:
   wallSlideSpeed: 2
   isDashing: 0
   dashedAfterJump: 0
-  dashDuration: 0.3
-  dashForce: 10
+  dashDuration: 0.25
+  dashForce: 30
   highFrictionMaterial: {fileID: 6200000, guid: 53a253824fd826f49911eb2751e4eb99, type: 2}
   lowFrictionMaterial: {fileID: 6200000, guid: 26e7d410b6836d14ea5b55e819b1952b, type: 2}
 --- !u!1 &4251899601533652575

@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 55d9f9f62cc543b4caeca727c4caebcb
+guid: 4686a83ae8dcf964381d1fbd222c6880
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3751427952096090796
-    second: vecteezy_wooden-door-pixel_10462550-removebg-preview_0
+      213: 2899335387597099960
+    second: Fall_Stump_0
+  - first:
+      213: 312150898401000158
+    second: Fall_Stump_1
+  - first:
+      213: -5836744511233891320
+    second: Fall_Stump_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,23 +119,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: door_0
+      name: Fall_Stump_0
       rect:
         serializedVersion: 2
-        x: 90
-        y: 57
-        width: 270
-        height: 446
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1
+        y: 0
+        width: 27
+        height: 43
+      alignment: 9
+      pivot: {x: 0.54241747, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: cd3cbc968012d574ca53cf7dee51d7ad
-      internalID: -98439434
+      spriteID: 8b3d1767c228c3820800000000000000
+      internalID: 2899335387597099960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fall_Stump_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 0
+        width: 28
+        height: 44
+      alignment: 9
+      pivot: {x: 0.62900054, y: 0.5200223}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edab287969bf45400800000000000000
+      internalID: 312150898401000158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fall_Stump_2
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 0
+        width: 21
+        height: 47
+      alignment: 9
+      pivot: {x: 0.69297683, y: 0.5412373}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 804613b9ac7bffea0800000000000000
+      internalID: -5836744511233891320
       vertices: []
       indices: 
       edges: []
@@ -138,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 04b42f9aa8ca8e443b26ef139f83b323
+    spriteID: 6b11f2847b6f2dd4ca44b9f81120e5c5
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      door_0: -98439434
+      Fall_Stump_0: 2899335387597099960
+      Fall_Stump_1: 312150898401000158
+      Fall_Stump_2: -5836744511233891320
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
