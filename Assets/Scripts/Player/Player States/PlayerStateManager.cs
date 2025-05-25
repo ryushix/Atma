@@ -41,7 +41,7 @@ public class PlayerStateManager : MonoBehaviour
         currentState.UpdateState();
     }
 
-    void FxedUpdate()
+    void FixedUpdate()
     {
         currentState.FixedUpdateState();
     }

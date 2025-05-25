@@ -84,12 +84,12 @@ SpriteRenderer:
   m_SortingLayerID: -1187041913
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4723107735738678597, guid: 8fca0cfabeae45542bd61e35a97e73aa, type: 3}
+  m_Sprite: {fileID: -2938214760694349928, guid: c9c5521348b616d4197824071b0acc4b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.6041667, y: 1.0208334}
+  m_Size: {x: 1.25, y: 3.0625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -190,7 +190,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2085232129798265164}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b9403309b139e4498c4be6f111ee5d5, type: 3}
+  m_Script: {fileID: 11500000, guid: ed8f8079375fe284dbcb93ba0d60cef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6176248861567418387}
+  playerMovement: {fileID: 9050859619207510924}
+  playerRB: {fileID: 3605033867370831181}
+--- !u!114 &9050859619207510924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085232129798265164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32852183e7ceb84daf6b7bc16cb293f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 2086365256433749036}
@@ -214,8 +229,8 @@ MonoBehaviour:
   wallSlideSpeed: 2
   isDashing: 0
   dashedAfterJump: 0
-  dashDuration: 0.5
-  dashForce: 15
+  dashDuration: 0.25
+  dashForce: 30
   highFrictionMaterial: {fileID: 6200000, guid: 53a253824fd826f49911eb2751e4eb99, type: 2}
   lowFrictionMaterial: {fileID: 6200000, guid: 26e7d410b6836d14ea5b55e819b1952b, type: 2}
 --- !u!114 &4954941657653073039

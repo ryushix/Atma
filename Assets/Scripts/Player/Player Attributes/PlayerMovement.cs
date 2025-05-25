@@ -39,8 +39,8 @@ public class PlayerMovement : MonoBehaviour
     public bool dashedAfterJump;
     private float dashDirection;
     private Coroutine dashCoroutine;
-    [SerializeField]private float dashDuration = 0.5f;
-    [SerializeField]private float dashForce = 15f;
+    [SerializeField]private float dashDuration = 0.25f;
+    [SerializeField]private float dashForce = 30f;
 
     [Header("Physics Material Settings")]
     public PhysicsMaterial2D highFrictionMaterial;
@@ -83,10 +83,20 @@ public class PlayerMovement : MonoBehaviour
         return playerRb.linearVelocity.y < -1f && !isGrounded();
 
     }
+
+    void OnDrawGizmosSelected()
+    {
+        if (groundCheck != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(groundCheck.position, 0.1f);
+        }
+    }
+    
     public void Move(float moveInput)
     {
         playerRb.linearVelocity = new Vector2(moveInput * moveSpeed, playerRb.linearVelocity.y);
-        playerAnim.Play("PlayerRun");
+        playerAnim.Play("PlayerRun_Stump");
         FlipCharacter(moveInput);
     }
 
@@ -197,20 +207,20 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    public void MoveDuringDash(float moveInput)
-    {
-        if (!isDashing) return;
+    // public void MoveDuringDash(float moveInput)
+    // {
+    //     if (!isDashing) return;
 
-        float moveDirection = moveInput;
+    //     float moveDirection = moveInput;
 
-        if (Mathf.Abs(moveInput) < 0.1f)
-        {
-            moveDirection = facingRight ? 1 : -1;
-        }
+    //     if (Mathf.Abs(moveInput) < 0.1f)
+    //     {
+    //         moveDirection = facingRight ? 1 : -1;
+    //     }
 
-        playerRb.linearVelocity = new Vector2(moveDirection * dashForce, playerRb.linearVelocity.y);
-        FlipCharacter(moveDirection);
-    }
+    //     playerRb.linearVelocity = new Vector2(moveDirection * dashForce, playerRb.linearVelocity.y);
+    //     FlipCharacter(moveDirection);
+    // }
 
     public bool IsTouchingWall()
     {
