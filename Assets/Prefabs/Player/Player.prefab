@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4954941657653073039}
   - component: {fileID: 7789750726139095344}
   - component: {fileID: 6338891008146773667}
+  - component: {fileID: 3729292095799699808}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -250,6 +251,25 @@ MonoBehaviour:
   currentHealth: 0
   healthSlider: {fileID: 0}
   healthText: {fileID: 0}
+--- !u!114 &3729292095799699808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085232129798265164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26cda3a36a5fc184b8754fb389248c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comboResetTime: 1
+  maxCombo: 3
+  comboCooldownTime: 0.7
+  attackCooldownTime: 0.5
+  attackKey: 323
+  canAttack: 1
+  attack3Duration: 0.8
 --- !u!1 &4251899601533652575
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +453,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.12, y: -1.78, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2344201724620543720}
