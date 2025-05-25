@@ -1,19 +1,28 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+    [Header("Health Settings")]
     public int maxHealth = 100;
     public int currentHealth;
 
-    void Awake()
+    [Header("UI")]
+    public Slider healthSlider;
+    public Text healthText;
+
+    void Start()
     {
         currentHealth = maxHealth;
+        UpdateUI();
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int damage)
     {
-        currentHealth -= amount;
-        Debug.Log($"{gameObject.name} took {amount} damage. Remaining HP: {currentHealth}");
+        currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        UpdateUI();
 
         if (currentHealth <= 0)
         {
@@ -21,9 +30,18 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void Die()
+    void UpdateUI()
     {
-        Debug.Log($"{gameObject.name} died.");
-        gameObject.SetActive(false); // Atau Destroy(gameObject) jika mau hapus total
+        if (healthSlider != null)
+            healthSlider.value = (float)currentHealth / maxHealth;
+
+        if (healthText != null)
+            healthText.text = currentHealth + " / " + maxHealth;
+    }
+
+    void Die()
+    {
+        // Bisa animasi mati, atau efek
+        gameObject.SetActive(false); // hilangkan player
     }
 }

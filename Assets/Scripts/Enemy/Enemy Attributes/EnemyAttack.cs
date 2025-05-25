@@ -3,13 +3,23 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public int damageAmount = 10;
+    public float damageInterval = 1.5f;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private float lastDamageTime = 0f;
+
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        Health health = collision.gameObject.GetComponent<Health>();
-        if (health != null)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            health.TakeDamage(damageAmount);
+            if (Time.time >= lastDamageTime + damageInterval)
+            {
+                Health playerHealth = collision.gameObject.GetComponent<Health>();
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(damageAmount);
+                    lastDamageTime = Time.time;
+                }
+            }
         }
     }
 }
