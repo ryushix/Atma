@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyStateManager : MonoBehaviour
 {
     public Animator animator;
-    public Rigidbody2D enemyRB;
     public EnemyMovement enemyMovement;
     private EnemyBaseState currentState;
 
@@ -13,7 +12,6 @@ public class EnemyStateManager : MonoBehaviour
     void Awake()
     {
         enemyMovement = GetComponent<EnemyMovement>();
-        enemyRB = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
         patrolState = new EnemyPatrolState(this);
