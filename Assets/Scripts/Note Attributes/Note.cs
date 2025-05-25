@@ -12,9 +12,11 @@ public class Note : MonoBehaviour
     private int index;
 
     public GameObject conButton;
-
     public float wordSpeed;
+
     private bool isPlayerNearby;
+    private bool isTyping;
+    private Coroutine typingCoroutine;
 
     void Update()
     {
@@ -27,9 +29,10 @@ public class Note : MonoBehaviour
             else
             {
                 dialoguePanel.SetActive(true);
-                StartCoroutine(Typing());
+                typingCoroutine = StartCoroutine(Typing());
             }
         }
+
         if (dialogueText.text == dialogue[index])
         {
             conButton.SetActive(true);
@@ -41,14 +44,39 @@ public class Note : MonoBehaviour
         dialogueText.text = "";
         index = 0;
         dialoguePanel.SetActive(false);
+        conButton.SetActive(false);
+        isTyping = false;
+
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
     }
 
     IEnumerator Typing()
     {
+        isTyping = true;
+        dialogueText.text = "";
+
         foreach (char letter in dialogue[index].ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(wordSpeed); 
+            yield return new WaitForSeconds(wordSpeed);
+        }
+
+        isTyping = false;
+    }
+
+    public void SkipTyping()
+    {
+        if (isTyping)
+        {
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine);
+            }
+            dialogueText.text = dialogue[index];
+            isTyping = false;
         }
     }
 
@@ -60,7 +88,7 @@ public class Note : MonoBehaviour
         {
             index++;
             dialogueText.text = "";
-            StartCoroutine(Typing());
+            typingCoroutine = StartCoroutine(Typing());
         }
         else
         {
