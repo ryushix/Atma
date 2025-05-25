@@ -226,8 +226,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2085232129798265164, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1027522047}
   m_SourcePrefab: {fileID: 100100000, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
+--- !u!1 &51085625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2085232129798265164, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
+  m_PrefabInstance: {fileID: 51085624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &219597274
 GameObject:
   m_ObjectHideFlags: 0
@@ -19571,6 +19579,20 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 3605033867370831181, guid: 2bc640f57b21be545a44655e481e9a18, type: 3}
   m_PrefabInstance: {fileID: 51085624}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1027522047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51085625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d865502316761468a71916b99cded3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
 --- !u!1001 &1141092495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20366,6 +20388,7 @@ GameObject:
   - component: {fileID: 2073081836}
   - component: {fileID: 2073081833}
   - component: {fileID: 2073081835}
+  - component: {fileID: 2073081838}
   - component: {fileID: 2073081837}
   m_Layer: 0
   m_Name: Enemy
@@ -20572,6 +20595,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2073081838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073081830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2723f8c6d7abcd448bfd4183917a7c09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 10
 --- !u!1 &2132450149
 GameObject:
   m_ObjectHideFlags: 0
@@ -20729,11 +20765,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3235133101155482495, guid: d3ad8bb921f0a4044b78243c621cbbc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5587132
+      value: -0.60463667
       objectReference: {fileID: 0}
     - target: {fileID: 3235133101155482495, guid: d3ad8bb921f0a4044b78243c621cbbc4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9782798
+      value: 1.8690798
       objectReference: {fileID: 0}
     - target: {fileID: 3235133101155482495, guid: d3ad8bb921f0a4044b78243c621cbbc4, type: 3}
       propertyPath: m_LocalPosition.z
