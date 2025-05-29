@@ -6,7 +6,7 @@ public class EnemyPatrolState : EnemyBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Enemy State: Patrol");
+        // Debug.Log("Enemy State: Patrol");
 
         manager.animator.Play("EnemyMove");
         manager.enemyMovement.SetLowFriction();

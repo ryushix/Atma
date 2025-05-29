@@ -42,6 +42,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]private float dashDuration = 0.25f;
     [SerializeField]private float dashForce = 30f;
 
+    [Header("Ability Toggles")]
+    public bool canDash;
+    public bool canWallJump;
+    public bool canDoubleJump;
+
     [Header("Physics Material Settings")]
     public PhysicsMaterial2D highFrictionMaterial;
     public PhysicsMaterial2D lowFrictionMaterial;
@@ -66,11 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // bool touchingLeftWall = Physics2D.OverlapCircle(leftWallCheck.position, 0.1f, groundLayer);
-        // bool touchingRightWall = Physics2D.OverlapCircle(rightWallCheck.position, 0.1f, groundLayer);
-
-        // isTouchingWall = touchingLeftWall || touchingRightWall;
-        // wallDirection = touchingLeftWall ? -1 : touchingRightWall ? 1 : 0;
+        
     }
 
     public bool isGrounded()
@@ -96,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
     public void Move(float moveInput)
     {
         playerRb.linearVelocity = new Vector2(moveInput * moveSpeed, playerRb.linearVelocity.y);
-        playerAnim.Play("PlayerRun_Stump");
+        playerAnim.Play("PlayerRun_Handed");
         FlipCharacter(moveInput);
     }
 
@@ -129,6 +130,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void DoubleJump()
     {
+        if (!canDoubleJump)
+        {
+            return;
+        }
+
         jumpTimer = jumpDuration;
         isJumping = true;
         hasDoubleJumped = true;
@@ -168,6 +174,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Dash()
     {
+        if (!canDash)
+        {
+            return;
+        }
+
         if (!isGrounded() && dashedAfterJump)
         {
             return;
@@ -180,7 +191,7 @@ public class PlayerMovement : MonoBehaviour
         {
             dashedAfterJump = true;
         }
-        
+
         if (dashCoroutine != null)
             StopCoroutine(dashCoroutine);
 
@@ -206,22 +217,6 @@ public class PlayerMovement : MonoBehaviour
         isDashing = false;
     }
 
-
-    // public void MoveDuringDash(float moveInput)
-    // {
-    //     if (!isDashing) return;
-
-    //     float moveDirection = moveInput;
-
-    //     if (Mathf.Abs(moveInput) < 0.1f)
-    //     {
-    //         moveDirection = facingRight ? 1 : -1;
-    //     }
-
-    //     playerRb.linearVelocity = new Vector2(moveDirection * dashForce, playerRb.linearVelocity.y);
-    //     FlipCharacter(moveDirection);
-    // }
-
     public bool IsTouchingWall()
     {
         bool touchingLeftWall = Physics2D.OverlapCircle(leftWallCheck.position, 0.1f, groundLayer);
@@ -241,11 +236,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void WallJump()
     {
+        if (!canWallJump)
+        {
+            return;
+        }
+
         float jumpDir = -wallDirection;
         playerRb.linearVelocity = new Vector2(jumpDir * jumpPower, jumpForce);
         hasDoubleJumped = false;
-        // dashedAfterJump = false;
-        // ChangeState(PlayerMovementState.Jump);
     }
 
     public void TryDropPlatform()

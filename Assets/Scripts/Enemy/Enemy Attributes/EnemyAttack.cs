@@ -19,6 +19,15 @@ public class EnemyAttack : MonoBehaviour
                     playerHealth.TakeDamage(damageAmount);
                     lastDamageTime = Time.time;
                 }
+                Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
+                if (playerRb != null)
+                {
+                    Vector2 knockbackDir = (collision.transform.position - transform.position).normalized; // Arah Player dari Enemy
+                    float knockbackSpeed = 5f; // Ganti sesuai kebutuhan
+
+                    // Reset velocity biar knockback terasa instant
+                    playerRb.linearVelocity = knockbackDir * knockbackSpeed;
+                }
             }
         }
     }

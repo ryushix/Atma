@@ -5,11 +5,11 @@ public class PlayerJumpState : PlayerBaseState
     public PlayerJumpState(PlayerStateManager manager) : base(manager) { }
     public override void EnterState()
     {
-        Debug.Log("Current State : Jump");
+        // Debug.Log("Current State : Jump");
         manager.playerRB.gravityScale = 3f;
         
         manager.playerMovement.Jump();
-        manager.animator.Play("PlayerJump_Stump");
+        manager.animator.Play("PlayerJump_Handed");
         manager.playerMovement.SetLowFriction();
     }
 
@@ -27,11 +27,11 @@ public class PlayerJumpState : PlayerBaseState
         {
             manager.SwitchState(manager.fallState);
         }
-        if (Input.GetKeyDown(KeyCode.Space) && !manager.playerMovement.hasDoubleJumped)
+        if (Input.GetKeyDown(KeyCode.Space) && !manager.playerMovement.hasDoubleJumped && manager.playerMovement.canDoubleJump)
         {
             manager.SwitchState(manager.doubleJumpState);
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !manager.playerMovement.dashedAfterJump)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !manager.playerMovement.dashedAfterJump && manager.playerMovement.canDash)
         {
             manager.SwitchState(manager.dashState);
         }

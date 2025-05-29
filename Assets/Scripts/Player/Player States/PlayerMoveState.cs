@@ -6,7 +6,7 @@ public class PlayerMoveState : PlayerBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Current State : Move");
+        // Debug.Log("Current State : Move");
         manager.playerRB.gravityScale = 10f;
 
         manager.playerMovement.isDashing = false;
@@ -38,7 +38,7 @@ public class PlayerMoveState : PlayerBaseState
             manager.SwitchState(manager.jumpState);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && manager.playerMovement.canDash)
         {
             manager.SwitchState(manager.dashState);
         }

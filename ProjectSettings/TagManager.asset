@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - TurnPoint
+  - AttackPlayer
   layers:
   - Default
   - TransparentFX

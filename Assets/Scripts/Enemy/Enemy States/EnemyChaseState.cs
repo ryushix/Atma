@@ -6,7 +6,7 @@ public class EnemyChaseState : EnemyBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Enemy State: Chase");
+        // Debug.Log("Enemy State: Chase");
 
         manager.animator.Play("EnemyMove");
         manager.enemyMovement.SetLowFriction();

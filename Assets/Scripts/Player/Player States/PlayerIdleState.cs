@@ -8,7 +8,7 @@ public class PlayerIdleState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Current State : Idle");
-        manager.animator.Play("PlayerIdle_Stump");
+        manager.animator.Play("PlayerIdle_Handed");
         manager.playerMovement.SetHighFriction();
 
         manager.playerMovement.isDashing = false;
@@ -36,7 +36,7 @@ public class PlayerIdleState : PlayerBaseState
         if (Input.GetKeyDown(KeyCode.Space))
             manager.SwitchState(manager.jumpState);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && manager.playerMovement.canDash)
             manager.SwitchState(manager.dashState);
     }
 }

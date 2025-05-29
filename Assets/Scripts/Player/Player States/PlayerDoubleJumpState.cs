@@ -5,10 +5,10 @@ public class PlayerDoubleJumpState : PlayerBaseState
     public PlayerDoubleJumpState(PlayerStateManager manager) : base(manager) { }
     public override void EnterState()
     {
-        Debug.Log("Current State : DoubleJump");
+        // Debug.Log("Current State : DoubleJump");
         manager.playerRB.gravityScale = 3f;
 
-        manager.animator.Play("PlayerJump_Stump");
+        manager.animator.Play("PlayerJump_Handed");
         manager.playerMovement.DoubleJump();
         manager.playerMovement.SetLowFriction();
     }
