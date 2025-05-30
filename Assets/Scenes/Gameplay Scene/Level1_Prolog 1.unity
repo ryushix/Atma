@@ -706,52 +706,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3084551795234643774, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3084551795234643774, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3084551795234643774, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3989085167742762648, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 3989085167742762648, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 3989085167742762648, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 3989085167742762648, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 4316860070501558774, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
       propertyPath: m_Name
       value: UIPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 6613915852168461923, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
-      propertyPath: m_Value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6613915852168461923, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6893990303511105517, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
-      propertyPath: m_CullTransparentMesh
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7719608719813984260, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7719608719813984260, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1025,7 +985,8 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1027522041}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3225393431289912498, guid: a5f811a583057024ea2ed5d622d7ab47, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

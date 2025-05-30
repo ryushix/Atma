@@ -256,7 +256,7 @@ MonoBehaviour:
   currentHealth: 100
   healthSlider: {fileID: 0}
   healthText: {fileID: 0}
-  damageFromPlayer: 10
+  knockbackStrength: 6
   respawnDelay: 5
 --- !u!114 &3729292095799699808
 MonoBehaviour:
@@ -289,6 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2643667397054838618}
   - component: {fileID: 716202032001468734}
+  - component: {fileID: 8866354454872427626}
   m_Layer: 3
   m_Name: attackPoint
   m_TagString: AttackPlayer
@@ -368,6 +369,19 @@ PolygonCollider2D:
       - {x: 3.0678713, y: 1.3704389}
       - {x: 0.9301522, y: 2.3014395}
   m_UseDelaunayMesh: 0
+--- !u!114 &8866354454872427626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2968201605880393828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdfb33ed19f0ac04da5ddb603711da0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 20
 --- !u!1 &4251899601533652575
 GameObject:
   m_ObjectHideFlags: 0
