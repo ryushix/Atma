@@ -10,6 +10,12 @@ public class EnemyPatrolState : EnemyBaseState
 
         manager.animator.Play("EnemyMove");
         manager.enemyMovement.SetLowFriction();
+
+        var health = manager.GetComponent<EnemyHealth>();
+        if (health != null)
+        {
+            health.ShowHealthUI(false);
+        }
     }
 
     public override void UpdateState()

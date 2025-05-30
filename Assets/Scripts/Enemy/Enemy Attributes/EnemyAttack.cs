@@ -13,19 +13,18 @@ public class EnemyAttack : MonoBehaviour
         {
             if (Time.time >= lastDamageTime + damageInterval)
             {
-                Health playerHealth = collision.gameObject.GetComponent<Health>();
+                PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
                 if (playerHealth != null)
                 {
-                    playerHealth.TakeDamage(damageAmount);
+                    playerHealth.TakeDamage(damageAmount, transform.position);
                     lastDamageTime = Time.time;
                 }
+
                 Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
                 if (playerRb != null)
                 {
-                    Vector2 knockbackDir = (collision.transform.position - transform.position).normalized; // Arah Player dari Enemy
-                    float knockbackSpeed = 5f; // Ganti sesuai kebutuhan
-
-                    // Reset velocity biar knockback terasa instant
+                    Vector2 knockbackDir = (collision.transform.position - transform.position).normalized;
+                    float knockbackSpeed = 5f;
                     playerRb.linearVelocity = knockbackDir * knockbackSpeed;
                 }
             }
