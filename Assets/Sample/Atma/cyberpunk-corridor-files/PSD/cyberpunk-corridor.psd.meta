@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cyberpunk-corridor_0: -7389692324768847297
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

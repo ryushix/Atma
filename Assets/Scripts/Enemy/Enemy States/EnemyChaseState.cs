@@ -10,6 +10,12 @@ public class EnemyChaseState : EnemyBaseState
 
         manager.animator.Play("EnemyMove");
         manager.enemyMovement.SetLowFriction();
+
+        var health = manager.GetComponent<EnemyHealth>();
+        if (health != null)
+        {
+            health.ShowHealthUI(true);
+        }
     }
 
     public override void UpdateState()

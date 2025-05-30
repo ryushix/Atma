@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Health : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     [Header("Health Settings")]
     public int maxHealth = 100;
@@ -11,8 +11,7 @@ public class Health : MonoBehaviour
     public Slider healthSlider;
     public Text healthText;
 
-    [Header("Damage Settings")]
-    public int damageFromPlayer = 10;
+    [Header("Knockback Settings")]
     public float knockbackStrength = 6f;
 
     [Header("Respawn Settings")]
@@ -20,8 +19,11 @@ public class Health : MonoBehaviour
     private Vector3 initialPosition;
     private Quaternion initialRotation;
 
+    private Rigidbody2D rb;
+
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         initialPosition = transform.position;
         initialRotation = transform.rotation;
@@ -30,10 +32,17 @@ public class Health : MonoBehaviour
         UpdateUI();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Vector2 hitSource)
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        // Apply knockback
+        if (rb != null)
+        {
+            Vector2 knockbackDir = ((Vector2)transform.position - hitSource).normalized;
+            rb.linearVelocity = knockbackDir * knockbackStrength;
+        }
 
         Debug.Log($"{gameObject.name} took {damage} damage. Current HP: {currentHealth}");
 
@@ -56,7 +65,7 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-        Debug.Log($"{gameObject.name} has died. Will respawn in {respawnDelay} seconds.");
+        Debug.Log($"{gameObject.name} has died. Respawning in {respawnDelay} seconds.");
         gameObject.SetActive(false);
         Invoke(nameof(Respawn), respawnDelay);
     }
@@ -74,22 +83,12 @@ public class Health : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("AttackPlayer"))
+        if (collision.CompareTag("EnemyAttack"))
         {
-            // Hitung arah knockback untuk Enemy
-            Vector2 knockbackDir = (transform.position - collision.transform.position).normalized; // Enemy dari AttackPlayer
-            float knockbackStrength = 5f; // Sesuaikan kekuatan knockback
+            Debug.Log($"{gameObject.name} triggered by {collision.gameObject.name}");
 
-            // Apply knockback ke Enemy (this object)
-            Rigidbody2D enemyRb = GetComponent<Rigidbody2D>();
-            if (enemyRb != null)
-            {
-                enemyRb.linearVelocity = knockbackDir * knockbackStrength; // Langsung set velocity
-            }
-
-            // Terima damage
-            Debug.Log($"{gameObject.name} collided with {collision.gameObject.name}. Taking {damageFromPlayer} damage.");
-            TakeDamage(damageFromPlayer);
+            // Contoh serangan dari enemy (nilai damage bisa diambil dari script enemy juga)
+            TakeDamage(10, collision.transform.position);
         }
     }
 }

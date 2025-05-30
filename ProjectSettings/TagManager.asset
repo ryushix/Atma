@@ -7,6 +7,8 @@ TagManager:
   - Platform
   - TurnPoint
   - AttackPlayer
+  - EnemyAttack
+  - Enemy
   layers:
   - Default
   - TransparentFX

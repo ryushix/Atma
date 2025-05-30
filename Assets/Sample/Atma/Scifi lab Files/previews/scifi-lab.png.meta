@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      scifi-lab_0: 577030135706368667
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
