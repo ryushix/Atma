@@ -8,6 +8,7 @@ public class PlayerDashState : PlayerBaseState
     {
         // Debug.Log("Current State : Dash");
         manager.playerRB.gravityScale = 3f;
+        manager.animator.Play("PlayerDash");
 
         manager.playerMovement.Dash();
         manager.playerMovement.SetLowFriction();

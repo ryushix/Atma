@@ -1,37 +1,34 @@
 fileFormatVersion: 2
-guid: 908532555af2420418cad7a8993b6e79
+guid: 0d2f93b64740ecf47bc694a1cef3521d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3236675104909177313
-    second: Attack3_0
+      213: -7848039375673857549
+    second: Dash_0
   - first:
-      213: -6048392498854522608
-    second: Attack3_1
+      213: 1228786266525858794
+    second: Dash_1
   - first:
-      213: 4769638531270534136
-    second: Attack3_2
+      213: -8184982077848143418
+    second: Dash_2
   - first:
-      213: -4825729793490337222
-    second: Attack3_3
+      213: 3821791876570597701
+    second: Dash_3
   - first:
-      213: 710405504474814621
-    second: Attack3_4
+      213: -7909655948837581255
+    second: Dash_4
   - first:
-      213: -1658806294426973400
-    second: Attack3_5
+      213: -8671181234961673011
+    second: Dash_5
   - first:
-      213: -985871239997422432
-    second: Attack3_6
+      213: 6963869828799008140
+    second: Dash_6
   - first:
-      213: 1242959238900065772
-    second: Attack3_7
+      213: -6990486866005537651
+    second: Dash_7
   - first:
-      213: 8067879071682038392
-    second: Attack3_8
-  - first:
-      213: 8207475063323733418
-    second: Attack3_9
+      213: -561707785172425875
+    second: Dash_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -64,7 +61,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -78,7 +75,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,7 +99,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -140,221 +137,199 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack3_0
+      name: Dash_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 22
-        width: 63
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 2
+        width: 26
+        height: 45
+      alignment: 9
+      pivot: {x: 0.51236856, y: 0.51071954}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f1ec98604250513d0800000000000000
-      internalID: -3236675104909177313
+      spriteID: 3f96eadb4c9261390800000000000000
+      internalID: -7848039375673857549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack3_1
+      name: Dash_1
       rect:
         serializedVersion: 2
-        x: 61
+        x: 26
+        y: 3
+        width: 24
+        height: 44
+      alignment: 9
+      pivot: {x: 0.6071941, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aebf62959968d0110800000000000000
+      internalID: 1228786266525858794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_2
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 7
+        width: 35
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5964746, y: 0.5281385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c93ce48a2a196e80800000000000000
+      internalID: -8184982077848143418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_3
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 7
+        width: 39
+        height: 40
+      alignment: 9
+      pivot: {x: 0.611317, y: 0.5281385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 549c678867bb90530800000000000000
+      internalID: 3821791876570597701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_4
+      rect:
+        serializedVersion: 2
+        x: 124
         y: 9
-        width: 89
-        height: 63
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 44
+        height: 38
+      alignment: 9
+      pivot: {x: 0.6680998, y: 0.50846285}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 01193ab611bcf0ca0800000000000000
-      internalID: -6048392498854522608
+      spriteID: 93e0bf952d14b3290800000000000000
+      internalID: -7909655948837581255
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack3_2
+      name: Dash_5
       rect:
         serializedVersion: 2
-        x: 116
-        y: 20
-        width: 59
-        height: 52
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 168
+        y: 7
+        width: 39
+        height: 40
+      alignment: 9
+      pivot: {x: 0.6195628, y: 0.5120594}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8f3656b39f8213240800000000000000
-      internalID: 4769638531270534136
+      spriteID: dc49313db96c9a780800000000000000
+      internalID: -8671181234961673011
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack3_3
+      name: Dash_6
       rect:
         serializedVersion: 2
-        x: 197
-        y: 10
-        width: 56
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 208
+        y: 7
+        width: 34
+        height: 40
+      alignment: 9
+      pivot: {x: 0.6040416, y: 0.520099}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a324df41250970db0800000000000000
-      internalID: -4825729793490337222
+      spriteID: c8d00af86b2a4a060800000000000000
+      internalID: 6963869828799008140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack3_4
+      name: Dash_7
       rect:
         serializedVersion: 2
-        x: 298
-        y: 17
-        width: 76
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 242
+        y: 7
+        width: 31
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5726151, y: 0.5080396}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9814bcda0edbd900800000000000000
-      internalID: 710405504474814621
+      spriteID: d8cc4b88b3dccfe90800000000000000
+      internalID: -6990486866005537651
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack3_5
+      name: Dash_8
       rect:
         serializedVersion: 2
-        x: 301
-        y: 64
-        width: 10
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 82b8f75c67cbaf8e0800000000000000
-      internalID: -1658806294426973400
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Attack3_6
-      rect:
-        serializedVersion: 2
-        x: 379
-        y: 65
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0a40ea1a45b7152f0800000000000000
-      internalID: -985871239997422432
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Attack3_7
-      rect:
-        serializedVersion: 2
-        x: 173
+        x: 273
         y: 0
-        width: 55
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 22
+        height: 47
+      alignment: 9
+      pivot: {x: 0.6534826, y: 0.5205266}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ce5ade0a7d0ef3110800000000000000
-      internalID: 1242959238900065772
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Attack3_8
-      rect:
-        serializedVersion: 2
-        x: 251
-        y: 11
-        width: 55
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 87a8a6e254dd6ff60800000000000000
-      internalID: 8067879071682038392
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Attack3_9
-      rect:
-        serializedVersion: 2
-        x: 369
-        y: 29
-        width: 19
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aada944c51fc6e170800000000000000
-      internalID: 8207475063323733418
+      spriteID: d63e935deb96438f0800000000000000
+      internalID: -561707785172425875
       vertices: []
       indices: 
       edges: []
@@ -363,7 +338,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e6bfaf5b1055e3145835035922dce2dd
     internalID: 0
     vertices: []
     indices: 
@@ -373,16 +348,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Attack3_0: -3236675104909177313
-      Attack3_1: -6048392498854522608
-      Attack3_2: 4769638531270534136
-      Attack3_3: -4825729793490337222
-      Attack3_4: 710405504474814621
-      Attack3_5: -1658806294426973400
-      Attack3_6: -985871239997422432
-      Attack3_7: 1242959238900065772
-      Attack3_8: 8067879071682038392
-      Attack3_9: 8207475063323733418
+      Dash_0: -7848039375673857549
+      Dash_1: 1228786266525858794
+      Dash_2: -8184982077848143418
+      Dash_3: 3821791876570597701
+      Dash_4: -7909655948837581255
+      Dash_5: -8671181234961673011
+      Dash_6: 6963869828799008140
+      Dash_7: -6990486866005537651
+      Dash_8: -561707785172425875
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
