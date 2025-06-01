@@ -202,7 +202,6 @@ MonoBehaviour:
   currentHealth: 0
   healthSlider: {fileID: 0}
   healthText: {fileID: 0}
-  damageFromPlayer: 10
   knockbackStrength: 6
   respawnDelay: 5
 --- !u!1001 &278832606
@@ -53968,6 +53967,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5515599926761885651, guid: e1726fc460e440a489e795e55945c62c, type: 3}
+      propertyPath: Damping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515599926761885651, guid: e1726fc460e440a489e795e55945c62c, type: 3}
       propertyPath: BoundingShape2D
       value: 
       objectReference: {fileID: 780858619}
@@ -54246,7 +54249,6 @@ MonoBehaviour:
   currentHealth: 0
   healthSlider: {fileID: 0}
   healthText: {fileID: 0}
-  damageFromPlayer: 10
   knockbackStrength: 6
   respawnDelay: 5
 --- !u!4 &1572001128 stripped
@@ -54280,7 +54282,6 @@ MonoBehaviour:
   currentHealth: 0
   healthSlider: {fileID: 0}
   healthText: {fileID: 0}
-  damageFromPlayer: 10
   knockbackStrength: 6
   respawnDelay: 5
 --- !u!1001 &1726179643
@@ -54450,11 +54451,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3989085167742762648, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 247
       objectReference: {fileID: 0}
     - target: {fileID: 3989085167742762648, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -156
+      value: -180.03
       objectReference: {fileID: 0}
     - target: {fileID: 4316860070501558774, guid: 69c920d20c5913f4e9e2928d849b58d0, type: 3}
       propertyPath: m_Name
@@ -54614,7 +54615,6 @@ MonoBehaviour:
   currentHealth: 0
   healthSlider: {fileID: 0}
   healthText: {fileID: 0}
-  damageFromPlayer: 10
   knockbackStrength: 6
   respawnDelay: 5
 --- !u!1001 &2079297255
@@ -54700,7 +54700,6 @@ MonoBehaviour:
   currentHealth: 0
   healthSlider: {fileID: 0}
   healthText: {fileID: 0}
-  damageFromPlayer: 10
   knockbackStrength: 6
   respawnDelay: 5
 --- !u!1001 &2125087567
@@ -54797,11 +54796,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3235133101155482495, guid: d3ad8bb921f0a4044b78243c621cbbc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5604808
+      value: -3.5547588
       objectReference: {fileID: 0}
     - target: {fileID: 3235133101155482495, guid: d3ad8bb921f0a4044b78243c621cbbc4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.8090298
+      value: 3.8095899
       objectReference: {fileID: 0}
     - target: {fileID: 3235133101155482495, guid: d3ad8bb921f0a4044b78243c621cbbc4, type: 3}
       propertyPath: m_LocalPosition.z
