@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer | platformLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer | platformLayer);
     }
 
     public bool isFalling()
@@ -90,14 +90,14 @@ public class PlayerMovement : MonoBehaviour
         if (groundCheck != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(groundCheck.position, 0.1f);
+            Gizmos.DrawWireSphere(groundCheck.position, 0.2f);
         }
     }
     
     public void Move(float moveInput)
     {
         playerRb.linearVelocity = new Vector2(moveInput * moveSpeed, playerRb.linearVelocity.y);
-        playerAnim.Play("PlayerRun_Handed");
+        playerAnim.Play("PlayerRun_Stump");
         FlipCharacter(moveInput);
     }
 

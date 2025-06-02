@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class EntryPoint : MonoBehaviour
 {
@@ -11,7 +13,7 @@ public class EntryPoint : MonoBehaviour
         {
             if (!string.IsNullOrEmpty(targetSceneName))
             {
-                SceneController.instance.LoadScene(targetSceneName);
+                SceneManager.LoadSceneAsync(targetSceneName);
             }
         }
     }
@@ -21,6 +23,7 @@ public class EntryPoint : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isPlayerNearby = true;
+            Debug.Log(isPlayerNearby);
         }
     }
 

@@ -8,8 +8,10 @@ public class PlayerIdleState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Current State : Idle");
-        manager.animator.Play("PlayerIdle_Handed");
+        manager.animator.Play("PlayerIdle_Stump");
         manager.playerMovement.SetHighFriction();
+        manager.playerRB.gravityScale = 10f;
+
 
         manager.playerMovement.isDashing = false;
         manager.playerMovement.dashedAfterJump = false;
