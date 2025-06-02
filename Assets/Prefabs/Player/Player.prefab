@@ -401,6 +401,8 @@ MonoBehaviour:
   dashedAfterJump: 0
   dashDuration: 0.25
   dashForce: 30
+  canMove: 1
+  canJump: 1
   canDash: 1
   canWallJump: 1
   canDoubleJump: 1

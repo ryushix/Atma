@@ -42,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]private float dashDuration = 0.25f;
     [SerializeField]private float dashForce = 30f;
 
+    [Header("Basic Movements Toggles")]
+    public bool canMove;
+    public bool canJump;
+    
     [Header("Ability Toggles")]
     public bool canDash;
     public bool canWallJump;
@@ -64,14 +68,32 @@ public class PlayerMovement : MonoBehaviour
         groundLayer = LayerMask.GetMask("Ground");
         platformLayer = LayerMask.GetMask("Platform");
     }
-    void Start()
+    public void DisableBasicMovements()
     {
-        
+        canMove = false;
+        canJump = false;
+        Debug.Log("disabled");
     }
 
-    void Update()
+    public void EnableBasicMovements()
     {
-        
+        Debug.Log("Enable");
+        canMove = true;
+        canJump = true;
+    }
+
+    public void DisableAbility()
+    {
+        canDash = false;
+        canDoubleJump = false;
+        canWallJump = false;
+    }
+
+    public void EnableAbility()
+    {
+        canDash = true;
+        canDoubleJump = true;
+        canWallJump = true;
     }
 
     public bool isGrounded()
@@ -96,9 +118,12 @@ public class PlayerMovement : MonoBehaviour
     
     public void Move(float moveInput)
     {
-        playerRb.linearVelocity = new Vector2(moveInput * moveSpeed, playerRb.linearVelocity.y);
-        playerAnim.Play("PlayerRun_Stump");
-        FlipCharacter(moveInput);
+        if (canMove)
+        {
+            playerRb.linearVelocity = new Vector2(moveInput * moveSpeed, playerRb.linearVelocity.y);
+            playerAnim.Play("PlayerRun_Stump");
+            FlipCharacter(moveInput);
+        }
     }
 
     public void StopMovement()
@@ -114,18 +139,22 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        jumpTimer = jumpDuration;
-        isJumping = true;
+        if (canJump)
+        {
+            jumpTimer = jumpDuration;
+            isJumping = true;
 
-        if (isDashing)
-        {
-            float dashMove = (Mathf.Abs(dashDirection) > 0) ? dashDirection : (facingRight ? 1 : -1);
-            playerRb.linearVelocity = new Vector2(dashMove * dashForce, jumpForce);
+            if (isDashing)
+            {
+                float dashMove = (Mathf.Abs(dashDirection) > 0) ? dashDirection : (facingRight ? 1 : -1);
+                playerRb.linearVelocity = new Vector2(dashMove * dashForce, jumpForce);
+            }
+            else
+            {
+                playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce);
+            } 
         }
-        else
-        {
-            playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce);
-        }
+        
     }
 
     public void DoubleJump()

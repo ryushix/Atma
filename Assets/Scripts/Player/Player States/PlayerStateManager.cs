@@ -55,4 +55,9 @@ public class PlayerStateManager : MonoBehaviour
         currentState = newState;
         newState.EnterState();
     }
+
+    public void DisableControls()
+    {
+        
+    }
 }
