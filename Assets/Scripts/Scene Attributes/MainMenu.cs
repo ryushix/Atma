@@ -7,4 +7,20 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(1);
     }
+
+    public void OpenControls()
+    {
+        SceneManager.LoadSceneAsync(2);
+    }
+
+    public void ExitGame()
+    {
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #else
+        Application.Quit();
+    #endif
+
+        Debug.Log("Keluar dari game.");
+    }
 }
