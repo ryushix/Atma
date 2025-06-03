@@ -5,6 +5,6 @@ public class ControlsMenu : MonoBehaviour
 {
     public void BackToMainMenu()
     {
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync("Main Menu");
     }
 }
