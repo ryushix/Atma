@@ -122,12 +122,12 @@ TextureImporter:
       name: hit_Handed_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 3
         y: 0
-        width: 29
-        height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 21
+        height: 49
+      alignment: 9
+      pivot: {x: 0.60466987, y: 0.53105587}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -146,10 +146,10 @@ TextureImporter:
         serializedVersion: 2
         x: 29
         y: 0
-        width: 29
-        height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 26
+        height: 47
+      alignment: 9
+      pivot: {x: 0.5585283, y: 0.5035975}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -170,8 +170,8 @@ TextureImporter:
         y: 0
         width: 29
         height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5816256, y: 0.52359277}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -180,6 +180,94 @@ TextureImporter:
       bones: []
       spriteID: 6b9510e53eeab1a50800000000000000
       internalID: 6492975579342657974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hit_Handed_3
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 0
+        width: 29
+        height: 43
+      alignment: 9
+      pivot: {x: 0.56413424, y: 0.5196607}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36cf0e8e5f2adaf478fff99249ea5d2a
+      internalID: 1401566717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hit_Handed_4
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 0
+        width: 29
+        height: 43
+      alignment: 9
+      pivot: {x: 0.55830383, y: 0.5196607}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e36a1e307b23c34bb951bf12db486ed
+      internalID: 1580749494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hit_Handed_5
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 0
+        width: 26
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5260121, y: 0.5187869}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc8ee421871ce6f40ae9e7d006eeed1d
+      internalID: -392867964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hit_Handed_6
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 0
+        width: 26
+        height: 47
+      alignment: 9
+      pivot: {x: 0.5715338, y: 0.5107925}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12ffd26169d93e34dba8e20f85239543
+      internalID: -194004478
       vertices: []
       indices: 
       edges: []
@@ -201,6 +289,10 @@ TextureImporter:
       hit_Handed_0: 2870004948099333818
       hit_Handed_1: -5141284312125598548
       hit_Handed_2: 6492975579342657974
+      hit_Handed_3: 1401566717
+      hit_Handed_4: 1580749494
+      hit_Handed_5: -392867964
+      hit_Handed_6: -194004478
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

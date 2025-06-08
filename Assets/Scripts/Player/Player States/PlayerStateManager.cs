@@ -36,7 +36,7 @@ public class PlayerStateManager : MonoBehaviour
     }
     void Start()
     {
-        currentState = new PlayerIdleState(this);
+        currentState = idleState;
         currentState.EnterState();
     }
 
@@ -56,8 +56,20 @@ public class PlayerStateManager : MonoBehaviour
         newState.EnterState();
     }
 
+    public void OnAttackAnimationEnd()
+    {
+        currentState.OnAnimationEnd();
+    }
+
     public void DisableControls()
     {
-        
+        currentState = idleState;
+        currentState.EnterState();
+        this.enabled = false;
+    }
+
+    public void EnableControls()
+    {
+        this.enabled = true;
     }
 }

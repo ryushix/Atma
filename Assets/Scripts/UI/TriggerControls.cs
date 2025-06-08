@@ -14,7 +14,6 @@ public class TriggerControlls : MonoBehaviour
         if (collision.tag == "Player")
         {
             UIObject.SetActive(true);
-            Debug.Log("Work");
         }
     }
 
@@ -23,8 +22,7 @@ public class TriggerControlls : MonoBehaviour
         if (collision.tag == "Player")
         {
             UIObject.SetActive(false);
-            Destroy(triggerArea); 
+            Destroy(triggerArea);
         }
-        
     }
 }

@@ -122,12 +122,12 @@ TextureImporter:
       name: Hit_Stump_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 3
         y: 0
-        width: 29
-        height: 43
+        width: 21
+        height: 49
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -146,10 +146,10 @@ TextureImporter:
         serializedVersion: 2
         x: 29
         y: 0
-        width: 29
-        height: 43
+        width: 26
+        height: 47
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -171,7 +171,7 @@ TextureImporter:
         width: 29
         height: 43
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -188,7 +188,51 @@ TextureImporter:
       name: Hit_Stump_3
       rect:
         serializedVersion: 2
-        x: 89
+        x: 87
+        y: 0
+        width: 29
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aee005f462cdf024e91f0ff10e5b8cec
+      internalID: 785093506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_Stump_4
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 0
+        width: 29
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8de00a1c055c96d409f53d4f278658f9
+      internalID: 1992799050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_Stump_5
+      rect:
+        serializedVersion: 2
+        x: 147
         y: 0
         width: 26
         height: 45
@@ -200,8 +244,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aee005f462cdf024e91f0ff10e5b8cec
-      internalID: 785093506
+      spriteID: 840a3c2303bf67c42b8369d49fec12ee
+      internalID: 1232327803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_Stump_6
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 0
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dc105073c611b3439e7961c8da90c3b
+      internalID: -1180837852
       vertices: []
       indices: 
       edges: []
@@ -224,6 +290,9 @@ TextureImporter:
       Hit_Stump_1: 8470075720267273505
       Hit_Stump_2: -7024494200041229466
       Hit_Stump_3: 785093506
+      Hit_Stump_4: 1992799050
+      Hit_Stump_5: 1232327803
+      Hit_Stump_6: -1180837852
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

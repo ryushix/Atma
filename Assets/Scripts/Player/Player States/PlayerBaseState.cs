@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class PlayerBaseState 
+public abstract class PlayerBaseState
 {
     protected PlayerStateManager manager;
 
@@ -12,4 +12,5 @@ public abstract class PlayerBaseState
     public virtual void EnterState() { }
     public virtual void UpdateState() { }
     public virtual void FixedUpdateState() { }
+    public virtual void OnAnimationEnd() { }
 }

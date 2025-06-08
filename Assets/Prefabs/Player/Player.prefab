@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2785621624746022307}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -1.68, z: 0}
+  m_LocalPosition: {x: -0.06, y: -1.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -392,7 +392,7 @@ MonoBehaviour:
   hasDoubleJumped: 0
   isTouchingWall: 0
   wallDirection: 0
-  jumpForce: 10
+  jumpForce: 15
   jumpPower: 8
   jumpDuration: 0.15
   isWallSliding: 0
@@ -404,8 +404,8 @@ MonoBehaviour:
   canMove: 1
   canJump: 1
   canDash: 1
-  canWallJump: 1
-  canDoubleJump: 1
+  canWallJump: 0
+  canDoubleJump: 0
   highFrictionMaterial: {fileID: 6200000, guid: 53a253824fd826f49911eb2751e4eb99, type: 2}
   lowFrictionMaterial: {fileID: 6200000, guid: 26e7d410b6836d14ea5b55e819b1952b, type: 2}
 --- !u!1 &8630964215235635121
