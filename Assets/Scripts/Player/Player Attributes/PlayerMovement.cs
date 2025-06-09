@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         if (canMove)
         {
             playerRb.linearVelocity = new Vector2(moveInput * moveSpeed, playerRb.linearVelocity.y);
-            playerAnim.Play("PlayerRun_Stump");
+            playerAnim.Play("PlayerRun");
             FlipCharacter(moveInput);
         }
     }

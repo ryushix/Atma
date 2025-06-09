@@ -5,6 +5,16 @@ public class EventCollider : MonoBehaviour
 {
     public UnityEvent CollideEvents;
     public UnityEvent UnCollideEvents;
+    public UnityEvent InteractionEvents;
+    private bool isPlayerCollide;
+
+    private void Update()
+    {
+        if (isPlayerCollide && Input.GetKeyDown(KeyCode.E))
+        {
+            InteractionEvents?.Invoke();
+        }
+    }
     public void DisableCollider()
     {
         GetComponent<BoxCollider2D>().enabled = false;
@@ -19,6 +29,7 @@ public class EventCollider : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            isPlayerCollide = true;
             CollideEvents?.Invoke();
         }
     }
@@ -26,6 +37,7 @@ public class EventCollider : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            isPlayerCollide = true;
             CollideEvents?.Invoke();
         }
     }
@@ -34,6 +46,7 @@ public class EventCollider : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            isPlayerCollide = false;
             UnCollideEvents?.Invoke();
         }
     }

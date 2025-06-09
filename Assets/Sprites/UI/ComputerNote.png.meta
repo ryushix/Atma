@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9b1870f33381c1f438f7ffcd3be66147
+guid: 83defea9d4e28cf4cbc955c39f0ef25e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4986895348847021021
-    second: cryo-pod_0
+      213: -5445619886491465693
+    second: ComputerNote_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cryo-pod_0
+      name: ComputerNote_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 59
-        height: 87
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ddb0318e5e2053540800000000000000
-      internalID: 4986895348847021021
+      spriteID: 3288fdbb0954d64b0800000000000000
+      internalID: -5445619886491465693
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cryo-pod_0: 4986895348847021021
+      ComputerNote_0: -5445619886491465693
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
