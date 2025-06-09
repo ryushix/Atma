@@ -24,7 +24,7 @@ public class DialogSignalReceiver : MonoBehaviour
         dialogManager.StartDialog(dialog, OnDialogFinished, autoClose);
     }
 
-    void OnDialogFinished()
+    public void OnDialogFinished()
     {
         onDialogComplete?.Invoke();
         if (director != null) director.Resume(); // Lanjutkan Timeline

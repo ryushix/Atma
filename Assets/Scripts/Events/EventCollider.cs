@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class EventCollider : MonoBehaviour
 {
     public UnityEvent CollideEvents;
+    public UnityEvent UnCollideEvents;
     public void DisableCollider()
     {
         GetComponent<BoxCollider2D>().enabled = false;
@@ -33,7 +34,7 @@ public class EventCollider : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            DisableCollider();
+            UnCollideEvents?.Invoke();
         }
     }
 }
