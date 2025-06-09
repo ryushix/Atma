@@ -388,11 +388,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   facingRight: 1
-  moveSpeed: 7
+  moveSpeed: 10
   hasDoubleJumped: 0
   isTouchingWall: 0
   wallDirection: 0
-  jumpForce: 15
+  jumpForce: 10
   jumpPower: 8
   jumpDuration: 0.15
   isWallSliding: 0
