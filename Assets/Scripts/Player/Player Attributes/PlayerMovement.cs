@@ -63,8 +63,6 @@ public class PlayerMovement : MonoBehaviour
         playerAnim = GetComponent<Animator>();
 
         groundCheck = transform.Find("GroundCheck");
-        leftWallCheck = transform.Find("LeftWallCheck");
-        rightWallCheck = transform.Find("RightWallCheck");
 
         groundLayer = LayerMask.GetMask("Ground");
         platformLayer = LayerMask.GetMask("Platform");
@@ -140,22 +138,20 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (canJump)
-        {
-            jumpTimer = jumpDuration;
-            isJumping = true;
-
-            if (isDashing)
-            {
-                float dashMove = (Mathf.Abs(dashDirection) > 0) ? dashDirection : (facingRight ? 1 : -1);
-                playerRb.linearVelocity = new Vector2(dashMove * dashForce, jumpForce);
-            }
-            else
-            {
-                playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce);
-            } 
-        }
+        if (!canJump) return;
         
+        jumpTimer = jumpDuration;
+        isJumping = true;
+
+        if (isDashing)
+        {
+            float dashMove = (Mathf.Abs(dashDirection) > 0) ? dashDirection : (facingRight ? 1 : -1);
+            playerRb.linearVelocity = new Vector2(dashMove * dashForce, jumpForce);
+        }
+        else
+        {
+            playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce);
+        } 
     }
 
     public void DoubleJump()
@@ -249,18 +245,22 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsTouchingWall()
     {
-        bool touchingLeftWall = Physics2D.OverlapCircle(leftWallCheck.position, 0.1f, groundLayer);
-        bool touchingRightWall = Physics2D.OverlapCircle(rightWallCheck.position, 0.1f, groundLayer);
+        float wallCheckDistance = 0.7f;
+        Vector2 origin = transform.position;
+        Vector2 direction = facingRight ? Vector2.right : Vector2.left;
 
-        isTouchingWall = touchingLeftWall || touchingRightWall;
-        wallDirection = touchingLeftWall ? -1 : touchingRightWall ? 1 : 0;
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, wallCheckDistance, groundLayer);
+        Debug.DrawRay(transform.position, direction * wallCheckDistance, Color.green);
+
+        wallDirection = hit.collider != null ? (facingRight ? 1 : -1) : 0;
+        isTouchingWall = hit.collider != null;
 
         return isTouchingWall;
     }
 
     public int GetWallDirection()
     {
-        Debug.Log(wallDirection);
+        // Debug.Log(wallDirection);
         return wallDirection;
     }
 
@@ -285,8 +285,8 @@ public class PlayerMovement : MonoBehaviour
     public void WallClimb()
     {
         if (!canWallClimb) return;
-
-        playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce * 0.75f); // lebih pendek dari wall jump
+    
+        playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce * 1.5f);
         hasDoubleJumped = false;
     }
 
@@ -297,7 +297,6 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(DisablePlatformCollision());
         }
     }
-
 
     private bool IsOnPlatform()
     {

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMoveState : PlayerBaseState
@@ -21,7 +22,14 @@ public class PlayerMoveState : PlayerBaseState
         manager.playerMovement.Move(moveInput);
         manager.playerMovement.TryDropPlatform();
 
-        if(manager.playerMovement.isFalling())
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            manager.playerAttack.attackPushForce = 20f;
+            manager.SwitchState(manager.attackState);
+            return;
+        }
+
+        if (manager.playerMovement.isFalling())
         {
             manager.SwitchState(manager.fallState);
         }

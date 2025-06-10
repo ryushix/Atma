@@ -15,6 +15,7 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerFallState fallState;
     public PlayerDashState dashState;
     public PlayerWallSlideState wallSlideState;
+    public PlayerWallClimbState wallClimbState;
     public PlayerAttackState attackState;
 
 
@@ -32,6 +33,7 @@ public class PlayerStateManager : MonoBehaviour
         dashState = new PlayerDashState(this);
         doubleJumpState = new PlayerDoubleJumpState(this);
         wallSlideState = new PlayerWallSlideState(this);
+        wallClimbState = new PlayerWallClimbState(this);
         attackState = new PlayerAttackState(this);
     }
     void Start()

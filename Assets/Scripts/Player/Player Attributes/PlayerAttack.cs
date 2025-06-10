@@ -3,8 +3,8 @@ using System.Collections;
 
 public class PlayerAttack : MonoBehaviour
 {
-
     public GameObject attackPoint;
+    private Rigidbody2D playerRb;
 
     [Header("Combo Settings")]
     public float comboResetTime = 0.6f;
@@ -13,102 +13,101 @@ public class PlayerAttack : MonoBehaviour
     [HideInInspector] public bool comboFinished;
 
     [Header("Attack Settings")]
+    public bool canAttack;
     public float attackCooldownTime = 0f;
-    public KeyCode attackKey = KeyCode.Mouse0;
-    public bool canAttack = true;
-    public float attack3Duration = 0.4f; // Misalnya, durasi animasi Attack 3
-
+    public float attack3Duration = 0.4f;
+    public float attackPushForce = 120f;
 
     private int currentCombo = 0;
     private float lastAttackTime;
     private bool isComboCooldown = false;
     private bool isAttackCooldown = false;
     private bool comboResetTriggered = false;
+    private bool isAttacking = false;
+    
 
     private Animator playerAnim;
 
     void Awake()
     {
         playerAnim = GetComponent<Animator>();
+        playerRb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    public void EnableAttack()
     {
-        if (Input.GetKeyDown(attackKey) && canAttack && !isComboCooldown && !isAttackCooldown)
-        {
-            TryAttack();
-        }
+        canAttack = true;
+    }
 
-        if (!isComboCooldown && currentCombo > 0 && !comboResetTriggered)
+    public void DisableAttack()
+    {
+        canAttack = false;
+    }
+
+    public void StartCombo()
+    {
+        if (!canAttack) return;
+        currentCombo = 1;
+        PlayComboAnimation(currentCombo);
+        isAttacking = true;
+        comboFinished = false;
+        lastAttackTime = Time.time;
+    }
+
+    public void ContinueCombo()
+    {
+        if (!canAttack) return;
+        if (currentCombo < maxCombo)
         {
-            if (Time.time - lastAttackTime > comboResetTime)
-            {
-                StartCoroutine(ComboCooldown());
-                comboResetTriggered = true;
-            }
+            currentCombo++;
+            PlayComboAnimation(currentCombo);
+            lastAttackTime = Time.time;
+
+            if (currentCombo == maxCombo)
+                StartCoroutine(DelayedComboCooldown());
         }
     }
 
-    public void TryAttack()
+    public bool CanContinueCombo()
     {
-        comboFinished = true;
-        
         AnimatorStateInfo stateInfo = playerAnim.GetCurrentAnimatorStateInfo(0);
         float animProgress = stateInfo.normalizedTime % 1f;
 
-        // Cek apakah sedang dalam animasi attack
-        if ((stateInfo.IsName("PlayerAttack_1") || stateInfo.IsName("PlayerAttack_2") || stateInfo.IsName("PlayerAttack_3")) && animProgress < 0.7f)
-        {
-            // Debug.Log("Tunggu dulu, animasi belum cukup selesai!");
-            return;
-        }
-
-        Attack();
+        // Bisa lanjut combo hanya antara 60% sampai 90% animasi
+        return isAttacking &&
+            (stateInfo.IsName($"PlayerAttack_{currentCombo}")) &&
+            animProgress > 0.9;
     }
 
-    public void Attack()
+    public bool IsComboOver()
     {
-        lastAttackTime = Time.time;
-        currentCombo++;
+        return IsAnimationFinished() && !isComboCooldown && !isAttackCooldown;
+    }
 
-        if (currentCombo > maxCombo)
-        {
-            currentCombo = 1;
-        }
 
-        // Debug.Log($"Attack Combo {currentCombo}");
-
-        switch (currentCombo)
-        {
-            case 1:
-                playerAnim.Play("PlayerAttack_1", 0, 0f);
-                break;
-            case 2:
-                playerAnim.Play("PlayerAttack_2", 0, 0f);
-                break;
-            case 3:
-                playerAnim.Play("PlayerAttack_3", 0, 0f);
-                StartCoroutine(DelayedComboCooldown());
-                break;
-        }
-
+    private void PlayComboAnimation(int comboIndex)
+    {
+        playerAnim.Play($"PlayerAttack_{comboIndex}", 0, 0f);
         StartCoroutine(AttackCooldown());
+    }
+
+    private void ApplyAttackPush()
+    {
+        Vector2 pushDir = new Vector2(transform.localScale.x, 0).normalized;
+        playerRb.AddForce(pushDir * attackPushForce, ForceMode2D.Impulse);
     }
 
     public IEnumerator AttackCooldown()
     {
         isAttackCooldown = true;
-        canAttack = false;
 
         yield return new WaitForSeconds(attackCooldownTime);
 
         isAttackCooldown = false;
-        canAttack = true;
     }
 
     public IEnumerator DelayedComboCooldown()
     {
-        // Tunggu dulu biar animasi Attack 3 selesai
         yield return new WaitForSeconds(attack3Duration);
         StartCoroutine(ComboCooldown());
     }
@@ -116,9 +115,6 @@ public class PlayerAttack : MonoBehaviour
     public IEnumerator ComboCooldown()
     {
         isComboCooldown = true;
-        canAttack = false;
-
-        // Debug.Log("Combo selesai! Combo cooldown dimulai...");
 
         playerAnim.Play("ComboReset", 0, 0f);
 
@@ -126,10 +122,15 @@ public class PlayerAttack : MonoBehaviour
 
         currentCombo = 0;
         comboResetTriggered = false;
-        canAttack = true;
         isComboCooldown = false;
         comboFinished = true;
+        isAttacking = false;
+    }
 
-        // Debug.Log("Combo cooldown selesai. Bisa serang lagi!");
+    public bool IsAnimationFinished()
+    {
+        AnimatorStateInfo stateInfo = playerAnim.GetCurrentAnimatorStateInfo(0);
+        return stateInfo.normalizedTime >= 1f &&
+            (stateInfo.IsName($"PlayerAttack_{currentCombo}") || stateInfo.IsName("ComboReset"));
     }
 }

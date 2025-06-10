@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class PlayerWallSlideState : PlayerBaseState
@@ -24,12 +25,12 @@ public class PlayerWallSlideState : PlayerBaseState
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if (Input.GetKeyDown(KeyCode.Space) && manager.playerMovement.IsTouchingWall())
         {
-            if (moveInput == wallDir)
+            if (moveInput == wallDir && manager.playerMovement.canWallClimb)
             {
-                manager.playerMovement.WallClimb();
-                // Tetap di wall slide state atau bisa pindah ke climbing state jika ada
+                manager.SwitchState(manager.wallClimbState);
             }
             else if (moveInput == -wallDir)
             {

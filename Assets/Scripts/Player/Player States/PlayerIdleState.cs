@@ -7,7 +7,7 @@ public class PlayerIdleState : PlayerBaseState
     
     public override void EnterState()
     {
-        // Debug.Log("Current State : Idle");
+        Debug.Log("Current State : Idle");
         manager.animator.Play("PlayerIdle");
         manager.playerMovement.SetHighFriction();
         manager.playerRB.gravityScale = 10f;
@@ -23,6 +23,11 @@ public class PlayerIdleState : PlayerBaseState
         // Debug.Log(manager.playerMovement.isGrounded());
         float moveInput = Input.GetAxisRaw("Horizontal");
         manager.playerMovement.TryDropPlatform();
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            manager.SwitchState(manager.attackState);
+        }
 
         if (manager.playerMovement.isFalling())
         {
