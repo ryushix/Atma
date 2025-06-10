@@ -48,8 +48,9 @@ public class PlayerMovement : MonoBehaviour
     
     [Header("Ability Toggles")]
     public bool canDash;
-    public bool canWallJump;
     public bool canDoubleJump;
+    public bool canWallJump;
+    public bool canWallClimb;
 
     [Header("Physics Material Settings")]
     public PhysicsMaterial2D highFrictionMaterial;
@@ -72,12 +73,10 @@ public class PlayerMovement : MonoBehaviour
     {
         canMove = false;
         canJump = false;
-        Debug.Log("disabled");
     }
 
     public void EnableBasicMovements()
     {
-        Debug.Log("Enable");
         canMove = true;
         canJump = true;
     }
@@ -87,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
         canDash = false;
         canDoubleJump = false;
         canWallJump = false;
+        canWallClimb = false;
     }
 
     public void EnableAbility()
@@ -94,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
         canDash = true;
         canDoubleJump = true;
         canWallJump = true;
+        canWallClimb = true;
     }
 
     public bool isGrounded()
@@ -257,6 +258,12 @@ public class PlayerMovement : MonoBehaviour
         return isTouchingWall;
     }
 
+    public int GetWallDirection()
+    {
+        Debug.Log(wallDirection);
+        return wallDirection;
+    }
+
     public void WallSlide()
     {
         isWallSliding = true;
@@ -272,6 +279,14 @@ public class PlayerMovement : MonoBehaviour
 
         float jumpDir = -wallDirection;
         playerRb.linearVelocity = new Vector2(jumpDir * jumpPower, jumpForce);
+        hasDoubleJumped = false;
+    }
+
+    public void WallClimb()
+    {
+        if (!canWallClimb) return;
+
+        playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce * 0.75f); // lebih pendek dari wall jump
         hasDoubleJumped = false;
     }
 

@@ -22,7 +22,10 @@ public class PlayerJumpState : PlayerBaseState
         {
             manager.playerMovement.MoveInAir(moveInput);
         }
-
+        if (manager.playerMovement.IsTouchingWall())
+        {
+            manager.SwitchState(manager.wallSlideState);
+        }
         if (manager.playerMovement.isFalling())
         {
             manager.SwitchState(manager.fallState);

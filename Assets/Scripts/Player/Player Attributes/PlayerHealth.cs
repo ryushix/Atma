@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     public Text healthText;
 
     [Header("Knockback Settings")]
-    public float knockbackStrength = 6f;
+    public float knockbackStrength = 100f;
 
     [Header("Respawn Settings")]
     public float respawnDelay = 5f;

@@ -14,6 +14,7 @@ public class PlayerWallSlideState : PlayerBaseState
     public override void UpdateState()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
+        int wallDir = manager.playerMovement.GetWallDirection();
 
         manager.playerMovement.WallSlide();
 
@@ -25,9 +26,17 @@ public class PlayerWallSlideState : PlayerBaseState
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            manager.playerMovement.WallJump();
-            manager.SwitchState(manager.jumpState);
-            return;
+            if (moveInput == wallDir)
+            {
+                manager.playerMovement.WallClimb();
+                // Tetap di wall slide state atau bisa pindah ke climbing state jika ada
+            }
+            else if (moveInput == -wallDir)
+            {
+                manager.playerMovement.WallJump();
+                manager.SwitchState(manager.jumpState);
+                return;
+            }
         }
 
         if (!manager.playerMovement.IsTouchingWall())
