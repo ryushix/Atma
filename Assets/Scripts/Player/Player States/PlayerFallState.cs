@@ -5,7 +5,7 @@ public class PlayerFallState : PlayerBaseState
     public PlayerFallState(PlayerStateManager manager) : base(manager) { }
     public override void EnterState()
     {
-        // Debug.Log("Current State : Fall");
+        Debug.Log("Current State : Fall");
         manager.playerRB.gravityScale = 3f;
         
         manager.animator.Play("PlayerFall");

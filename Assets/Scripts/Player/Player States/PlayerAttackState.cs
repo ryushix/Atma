@@ -10,7 +10,6 @@ public class PlayerAttackState : PlayerBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Halo");
         manager.playerRB.gravityScale = 10f;
         lastInputTime = Time.time;
         attackPressed = false;
@@ -26,7 +25,7 @@ public class PlayerAttackState : PlayerBaseState
         float moveInput = Input.GetAxisRaw("Horizontal");
 
         // Simpan input ke buffer
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.J))
         {
             attackBuffered = true;
             lastInputTime = Time.time;

@@ -7,7 +7,7 @@ public class PlayerMoveState : PlayerBaseState
 
     public override void EnterState()
     {
-        // Debug.Log("Current State : Move");
+        Debug.Log("Current State : Move");
         manager.playerRB.gravityScale = 10f;
 
         manager.playerMovement.isDashing = false;
@@ -21,6 +21,7 @@ public class PlayerMoveState : PlayerBaseState
         float moveInput = Input.GetAxisRaw("Horizontal");
         manager.playerMovement.Move(moveInput);
         manager.playerMovement.TryDropPlatform();
+        int wallDir = manager.playerMovement.GetWallDirection();
 
         if (Input.GetKeyDown(KeyCode.J))
         {
@@ -28,7 +29,19 @@ public class PlayerMoveState : PlayerBaseState
             manager.SwitchState(manager.attackState);
             return;
         }
-
+        if (Input.GetKeyDown(KeyCode.Space) && manager.playerMovement.IsTouchingWall())
+        {
+            if (moveInput == wallDir && manager.playerMovement.canWallClimb)
+            {
+                manager.SwitchState(manager.wallClimbState);
+            }
+            else if (moveInput == -wallDir)
+            {
+                manager.playerMovement.WallJump();
+                manager.SwitchState(manager.jumpState);
+                return;
+            }
+        }
         if (manager.playerMovement.isFalling())
         {
             manager.SwitchState(manager.fallState);

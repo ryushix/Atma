@@ -23,9 +23,11 @@ public class PlayerIdleState : PlayerBaseState
         // Debug.Log(manager.playerMovement.isGrounded());
         float moveInput = Input.GetAxisRaw("Horizontal");
         manager.playerMovement.TryDropPlatform();
+        int wallDir = manager.playerMovement.GetWallDirection();
 
         if (Input.GetKeyDown(KeyCode.J))
         {
+            manager.playerAttack.attackPushForce = 120f;
             manager.SwitchState(manager.attackState);
         }
 
@@ -33,16 +35,19 @@ public class PlayerIdleState : PlayerBaseState
         {
             manager.SwitchState(manager.fallState);
         }
-        if (manager.playerMovement.IsTouchingWall() && !manager.playerMovement.isGrounded())
-        {
-            manager.SwitchState(manager.wallSlideState);
-        }
         if (Math.Abs(moveInput) > 0.1)
             manager.SwitchState(manager.moveState);
-
         if (Input.GetKeyDown(KeyCode.Space))
-            manager.SwitchState(manager.jumpState);
-
+        {
+            if (manager.playerMovement.IsTouchingWall())
+            {
+                manager.SwitchState(manager.jumpState);
+            }
+            else
+            {
+                manager.SwitchState(manager.jumpState);
+            }
+        }
         if (Input.GetKeyDown(KeyCode.LeftShift) && manager.playerMovement.canDash)
             manager.SwitchState(manager.dashState);
     }

@@ -10,6 +10,8 @@ public class PlayerWallSlideState : PlayerBaseState
         Debug.Log("Current State: Wall Slide");
         manager.playerRB.gravityScale = 3f;
         manager.playerMovement.isWallSliding = true;
+        manager.animator.Play("PlayerFall");
+
     }
 
     public override void UpdateState()
@@ -37,6 +39,10 @@ public class PlayerWallSlideState : PlayerBaseState
                 manager.playerMovement.WallJump();
                 manager.SwitchState(manager.jumpState);
                 return;
+            }
+            else if (manager.playerMovement.canWallClimb)
+            {
+                manager.SwitchState(manager.wallClimbState);
             }
         }
 

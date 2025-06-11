@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpPower = 8f;
     public float jumpDuration = 0.15f;
     private float jumpTimer;
-    private bool isJumping;
+    public bool isJumping;
 
     [Header("Wall Slide Settings")]
     public bool isWallSliding;

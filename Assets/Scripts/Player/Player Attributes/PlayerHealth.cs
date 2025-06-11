@@ -9,8 +9,7 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("UI (Optional)")]
     public Slider healthSlider;
-    public Text healthText;
-
+    
     [Header("Knockback Settings")]
     public float knockbackStrength = 100f;
 
@@ -58,9 +57,6 @@ public class PlayerHealth : MonoBehaviour
     {
         if (healthSlider != null)
             healthSlider.value = (float)currentHealth / maxHealth;
-
-        if (healthText != null)
-            healthText.text = currentHealth + " / " + maxHealth;
     }
 
     void Die()
