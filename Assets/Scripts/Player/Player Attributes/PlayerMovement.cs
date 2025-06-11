@@ -268,17 +268,6 @@ public class PlayerMovement : MonoBehaviour
     {
         isWallSliding = true;
         playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, -wallSlideSpeed);
-    }
-
-    public void WallJump()
-    {
-        if (!canWallJump)
-        {
-            return;
-        }
-
-        float jumpDir = -wallDirection;
-        playerRb.linearVelocity = new Vector2(jumpDir * jumpPower, jumpForce);
         hasDoubleJumped = false;
     }
 

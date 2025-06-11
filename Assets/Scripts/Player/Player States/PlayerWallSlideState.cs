@@ -34,9 +34,8 @@ public class PlayerWallSlideState : PlayerBaseState
             {
                 manager.SwitchState(manager.wallClimbState);
             }
-            else if (moveInput == -wallDir)
+            else if (moveInput == -wallDir && manager.playerMovement.canWallJump)
             {
-                manager.playerMovement.WallJump();
                 manager.SwitchState(manager.jumpState);
                 return;
             }

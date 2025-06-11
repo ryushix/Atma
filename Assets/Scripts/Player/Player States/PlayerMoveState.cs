@@ -35,12 +35,6 @@ public class PlayerMoveState : PlayerBaseState
             {
                 manager.SwitchState(manager.wallClimbState);
             }
-            else if (moveInput == -wallDir)
-            {
-                manager.playerMovement.WallJump();
-                manager.SwitchState(manager.jumpState);
-                return;
-            }
         }
         if (manager.playerMovement.isFalling())
         {
