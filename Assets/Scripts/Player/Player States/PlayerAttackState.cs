@@ -14,9 +14,14 @@ public class PlayerAttackState : PlayerBaseState
         lastInputTime = Time.time;
         attackPressed = false;
         attackBuffered = false;
+        manager.playerMovement.StopMovement();
         manager.playerMovement.DisableBasicMovements();
         manager.playerMovement.DisableAbility();
-        manager.playerMovement.StopMovement();
+        // manager.playerMovement.SetHighFriction();
+
+
+        manager.playerAttack.OnComboStepChanged += OnComboStepChanged;
+
         manager.playerAttack.StartCombo();
     }
 
@@ -41,6 +46,8 @@ public class PlayerAttackState : PlayerBaseState
         // Keluar state kalau animasi benar-benar selesai
         if (manager.playerAttack.IsComboOver())
         {
+            manager.playerAttack.OnComboStepChanged -= OnComboStepChanged;
+            
             manager.playerMovement.EnableBasicMovements();
             manager.playerMovement.EnableAbility();
             if (Mathf.Abs(moveInput) > 0.1f)
@@ -50,6 +57,18 @@ public class PlayerAttackState : PlayerBaseState
             else
             {
                 manager.SwitchState(manager.idleState);
+            }
+        }
+    }
+
+    private void OnComboStepChanged(int comboStep)
+    {
+        if (comboStep == 2 || comboStep == 3)
+        {
+            float moveInput = Input.GetAxisRaw("Horizontal");
+            if (Mathf.Abs(moveInput) > 0.1f)
+            {
+                manager.playerMovement.FlipCharacter(moveInput);
             }
         }
     }

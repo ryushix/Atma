@@ -303,7 +303,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void FlipCharacter(float moveInput)
+    public void FlipCharacter(float moveInput)
     {
         if ((moveInput < 0 && facingRight) || (moveInput > 0 && !facingRight))
         {

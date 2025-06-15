@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public GameObject attackPoint;
     private Rigidbody2D playerRb;
 
     [Header("Combo Settings")]
@@ -11,12 +10,14 @@ public class PlayerAttack : MonoBehaviour
     public int maxCombo = 3;
     public float comboCooldownTime = 0.2f;
     [HideInInspector] public bool comboFinished;
+    public System.Action<int> OnComboStepChanged;
 
     [Header("Attack Settings")]
     public bool canAttack;
+    public int damageAmount = 10;
     public float attackCooldownTime = 0f;
     public float attack3Duration = 0.4f;
-    public float attackPushForce = 120f;
+    public float attackPushForce = 100f;
 
     private int currentCombo = 0;
     private float lastAttackTime;
@@ -24,6 +25,7 @@ public class PlayerAttack : MonoBehaviour
     private bool isAttackCooldown = false;
     private bool comboResetTriggered = false;
     private bool isAttacking = false;
+    
     
 
     private Animator playerAnim;
@@ -62,6 +64,7 @@ public class PlayerAttack : MonoBehaviour
             currentCombo++;
             PlayComboAnimation(currentCombo);
             lastAttackTime = Time.time;
+            OnComboStepChanged?.Invoke(currentCombo);
 
             if (currentCombo == maxCombo)
                 StartCoroutine(DelayedComboCooldown());

@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    private Rigidbody2D enemyRb;
+
     [Header("Health Settings")]
     public int maxHealth = 100;
     private int currentHealth;
@@ -10,7 +12,13 @@ public class EnemyHealth : MonoBehaviour
     [Header("UI")]
     public GameObject healthUI; // Parent container (Canvas, etc)
     public Slider healthSlider;
-    public Text healthText;
+
+    [Header("Damage Cooldown")]
+    public float damageCooldown = 0.5f;
+    private float lastDamageTime = -Mathf.Infinity;
+
+    [Header("Knockback Settings")]
+    public float knockbackStrength = 100f;
 
     private void Start()
     {
@@ -27,12 +35,14 @@ public class EnemyHealth : MonoBehaviour
         UpdateUI();
 
         // Optional knockback
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            Vector2 knockbackDir = ((Vector2)transform.position - hitSource).normalized;
-            float knockbackForce = 5f;
-            rb.linearVelocity = knockbackDir * knockbackForce;
+        if (enemyRb != null)
+        { 
+            Vector2 knockbackDir = ((Vector2)transform.position - hitSource);
+            if (knockbackDir.magnitude < 0.1f)
+                knockbackDir = Vector2.right;
+
+            knockbackDir = knockbackDir.normalized;
+            enemyRb.AddForce(knockbackDir * knockbackStrength, ForceMode2D.Impulse);
         }
 
         if (currentHealth <= 0)
@@ -45,9 +55,6 @@ public class EnemyHealth : MonoBehaviour
     {
         if (healthSlider != null)
             healthSlider.value = (float)currentHealth / maxHealth;
-
-        if (healthText != null)
-            healthText.text = currentHealth + " / " + maxHealth;
     }
 
     public void ShowHealthUI(bool visible)
@@ -60,7 +67,38 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log($"{gameObject.name} has died!");
+        // Debug.Log($"{gameObject.name} has died!");
         gameObject.SetActive(false);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("PlayerAttack"))
+        {
+            if (Time.time >= lastDamageTime + damageCooldown)
+            {
+                int damage = 10;
+                Vector2 hitSource = collision.transform.position;
+
+                PlayerAttack playerAttack = collision.collider.GetComponent<PlayerAttack>();
+                if (playerAttack != null)
+                {
+                    Debug.Log("Test");
+                    damage = playerAttack.damageAmount;
+                }
+
+                var stateManager = GetComponent<EnemyStateManager>();
+                if (stateManager != null)
+                {
+                    stateManager.hitState.SetupHit(damage, hitSource);
+                    stateManager.SwitchState(stateManager.hitState);
+                }
+                    lastDamageTime = Time.time;
+                }
+            else
+            {
+                Debug.Log("Damage on cooldown!");
+            }
+        }
     }
 }

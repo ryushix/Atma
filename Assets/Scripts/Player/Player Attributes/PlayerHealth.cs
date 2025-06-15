@@ -9,16 +9,22 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("UI (Optional)")]
     public Slider healthSlider;
-    
+
     [Header("Knockback Settings")]
-    public float knockbackStrength = 100f;
+    public float knockbackStrength = 50f;
 
     [Header("Respawn Settings")]
     public float respawnDelay = 5f;
     private Vector3 initialPosition;
     private Quaternion initialRotation;
 
+    [Header("Damage Settings")]
+    public float damageCooldown = 1f;
+    [HideInInspector] public float lastDamageTime = -Mathf.Infinity;
+    // public int damageTaken;
+
     private Rigidbody2D rb;
+    // public Vector2 hitSource;
 
     void Start()
     {
@@ -27,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
         initialPosition = transform.position;
         initialRotation = transform.rotation;
 
-        Debug.Log($"{gameObject.name} starting with {currentHealth} HP.");
+        // Debug.Log($"{gameObject.name} starting with {currentHealth} HP.");
         UpdateUI();
     }
 
@@ -39,11 +45,15 @@ public class PlayerHealth : MonoBehaviour
         // Apply knockback
         if (rb != null)
         {
-            Vector2 knockbackDir = ((Vector2)transform.position - hitSource).normalized;
-            rb.linearVelocity = knockbackDir * knockbackStrength;
+            Vector2 knockbackDir = ((Vector2)transform.position - hitSource);
+            if (knockbackDir.magnitude < 0.1f)
+                knockbackDir = Vector2.right;
+
+            knockbackDir = knockbackDir.normalized;
+            rb.AddForce(knockbackDir * knockbackStrength, ForceMode2D.Impulse);
         }
 
-        Debug.Log($"{gameObject.name} took {damage} damage. Current HP: {currentHealth}");
+        // Debug.Log($"{gameObject.name} took {damage} damage. Current HP: {currentHealth}");
 
         UpdateUI();
 
@@ -61,7 +71,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        Debug.Log($"{gameObject.name} has died. Respawning in {respawnDelay} seconds.");
+        // Debug.Log($"{gameObject.name} has died. Respawning in {respawnDelay} seconds.");
         gameObject.SetActive(false);
         Invoke(nameof(Respawn), respawnDelay);
     }
@@ -72,19 +82,40 @@ public class PlayerHealth : MonoBehaviour
         transform.position = initialPosition;
         transform.rotation = initialRotation;
 
-        Debug.Log($"{gameObject.name} has respawned with {currentHealth} HP.");
+        // Debug.Log($"{gameObject.name} has respawned with {currentHealth} HP.");
         UpdateUI();
         gameObject.SetActive(true);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.CompareTag("EnemyAttack"))
+        bool enemyCollider = collision.collider.CompareTag("Enemy");
+        bool hazardCollider = collision.collider.CompareTag("Hazard");
+        if (enemyCollider || hazardCollider)
         {
-            Debug.Log($"{gameObject.name} triggered by {collision.gameObject.name}");
+            if (Time.time >= lastDamageTime + damageCooldown)
+            {
+                int damage = 10;
+                Vector2 hitSource = collision.transform.position;
 
-            // Contoh serangan dari enemy (nilai damage bisa diambil dari script enemy juga)
-            TakeDamage(10, collision.transform.position);
+                EnemyAttack enemyAttack = collision.collider.GetComponent<EnemyAttack>();
+                if (enemyAttack != null)
+                {
+                    damage = enemyAttack.damageAmount;
+                }
+                var stateManager = GetComponent<PlayerStateManager>();
+            if (stateManager != null)
+            {
+                stateManager.hitState.SetupHit(damage, hitSource);
+                stateManager.SwitchState(stateManager.hitState);
+            }
+                // TakeDamage(damage, hitSource);
+                lastDamageTime = Time.time;
+            }
+            else
+            {
+                Debug.Log("Damage on cooldown!");
+            }
         }
     }
 }

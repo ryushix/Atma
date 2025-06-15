@@ -7,7 +7,7 @@ public class PlayerWallSlideState : PlayerBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Current State: Wall Slide");
+        // Debug.Log("Current State: Wall Slide");
         manager.playerRB.gravityScale = 3f;
         manager.playerMovement.isWallSliding = true;
         manager.animator.Play("PlayerFall");

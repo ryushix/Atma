@@ -1,17 +1,28 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D enemyRb;
     private Collider2D playerCollider;
+    public Transform playerTransform;
 
+    [Header("Direction")]
     public Transform leftPoint;
     public Transform rightPoint;
+    public float chaseRadius = 7f;
+
+    [Header("Movement Settings")]
     public float moveSpeed = 5f;
+    public bool canMove = true;
+    public float idleTime = 2f;
     private bool movingRight = true;
 
-    public Transform playerTransform;
-    public float chaseRadius = 7f;
+    [Header("Bounce Settings")]
+    public float bounceForce = 7f;
+    public bool enableBounce = true;
+    private bool isGrounded = true;
+
 
     [Header("Physics Material Settings")]
     public PhysicsMaterial2D highFrictionMaterial;
@@ -24,34 +35,52 @@ public class EnemyMovement : MonoBehaviour
 
     public void Patrol()
     {
-        if (movingRight)
+        if (!canMove) return;
+
+        float direction = movingRight ? 1f : -1f;
+        enemyRb.linearVelocity = new Vector2(direction * moveSpeed, enemyRb.linearVelocity.y);
+
+        Debug.Log(enableBounce && isGrounded);
+        if (enableBounce && isGrounded)
         {
-            enemyRb.linearVelocity = new Vector2(moveSpeed, enemyRb.linearVelocity.y);
-            if (transform.position.x >= rightPoint.position.x)
-            {
-                Flip();
-            }
+            Bounce();
+            StartCoroutine(TemporaryIdle());
         }
-        else
+
+        if (movingRight && transform.position.x >= rightPoint.position.x)
         {
-            enemyRb.linearVelocity = new Vector2(-moveSpeed, enemyRb.linearVelocity.y);
-            if (transform.position.x <= leftPoint.position.x)
-            {
-                Flip();
-            }
+            Flip();
+        }
+        else if (!movingRight && transform.position.x <= leftPoint.position.x)
+        {
+            Flip();
         }
     }
 
     public void Chase()
     {
-        if (playerTransform == null) return;
+        if (playerTransform == null || !canMove) return;
 
         float direction = Mathf.Sign(playerTransform.position.x - transform.position.x);
         enemyRb.linearVelocity = new Vector2(direction * moveSpeed, enemyRb.linearVelocity.y);
+
+        if (enableBounce && isGrounded)
+        {
+            Bounce();
+        }
+
         if ((direction > 0 && !movingRight) || (direction < 0 && movingRight))
         {
             Flip();
         }
+        StartCoroutine(TemporaryIdle());
+    }
+
+    private void Bounce()
+    {
+        enemyRb.linearVelocity = new Vector2(enemyRb.linearVelocity.x, 0f); // reset Y to prevent buildup
+        enemyRb.AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
+        isGrounded = false;
     }
 
     public bool IsPlayerInRange()
@@ -86,6 +115,21 @@ public class EnemyMovement : MonoBehaviour
         if (playerCollider != null)
         {
             playerCollider.sharedMaterial = lowFrictionMaterial;
+        }
+    }
+
+    private IEnumerator TemporaryIdle()
+    {
+        canMove = false;
+        yield return new WaitForSeconds(idleTime);
+        canMove = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isGrounded = true;
         }
     }
 }

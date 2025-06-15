@@ -5,6 +5,7 @@ public class PlayerStateManager : MonoBehaviour
     public Animator animator;
     public PlayerMovement playerMovement;
     public PlayerAttack playerAttack;
+    public PlayerHealth playerHealth;
     public Rigidbody2D playerRB;
     PlayerBaseState currentState;
 
@@ -17,12 +18,14 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerWallSlideState wallSlideState;
     public PlayerWallClimbState wallClimbState;
     public PlayerAttackState attackState;
+    public PlayerHitState hitState;
 
 
     void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
         playerAttack = GetComponent<PlayerAttack>();
+        playerHealth = GetComponent<PlayerHealth>();
         animator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody2D>();
 
@@ -35,6 +38,7 @@ public class PlayerStateManager : MonoBehaviour
         wallSlideState = new PlayerWallSlideState(this);
         wallClimbState = new PlayerWallClimbState(this);
         attackState = new PlayerAttackState(this);
+        hitState = new PlayerHitState(this);
     }
     void Start()
     {

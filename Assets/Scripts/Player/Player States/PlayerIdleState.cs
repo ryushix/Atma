@@ -7,11 +7,10 @@ public class PlayerIdleState : PlayerBaseState
     
     public override void EnterState()
     {
-        Debug.Log("Current State : Idle");
+        // Debug.Log("Current State : Idle");
         manager.animator.Play("PlayerIdle");
         manager.playerMovement.SetHighFriction();
         manager.playerRB.gravityScale = 10f;
-
 
         manager.playerMovement.isDashing = false;
         manager.playerMovement.dashedAfterJump = false;
@@ -27,7 +26,7 @@ public class PlayerIdleState : PlayerBaseState
 
         if (Input.GetKeyDown(KeyCode.J))
         {
-            manager.playerAttack.attackPushForce = 120f;
+            manager.playerAttack.attackPushForce = 100f;
             manager.SwitchState(manager.attackState);
         }
 

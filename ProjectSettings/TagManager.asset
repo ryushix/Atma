@@ -6,9 +6,12 @@ TagManager:
   tags:
   - Platform
   - TurnPoint
-  - AttackPlayer
-  - EnemyAttack
   - Enemy
+  - PlayerAttack
+  - Hazard
+  - EnemyAttack
+  - AttackPlayer
+  - Ground
   layers:
   - Default
   - TransparentFX

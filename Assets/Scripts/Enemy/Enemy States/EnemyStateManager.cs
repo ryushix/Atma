@@ -8,6 +8,7 @@ public class EnemyStateManager : MonoBehaviour
 
     public EnemyPatrolState patrolState;
     public EnemyChaseState chaseState;
+    public EnemyHitState hitState;
 
     void Awake()
     {
@@ -16,6 +17,7 @@ public class EnemyStateManager : MonoBehaviour
 
         patrolState = new EnemyPatrolState(this);
         chaseState = new EnemyChaseState(this);
+        hitState = new EnemyHitState(this);
     }
 
     void Start()

@@ -20,14 +20,10 @@ public class EnemyPatrolState : EnemyBaseState
 
     public override void UpdateState()
     {
+        manager.enemyMovement.Patrol();
         if (manager.enemyMovement.IsPlayerInRange())
         {
             manager.SwitchState(manager.chaseState);
         }
-    }
-
-    public override void FixedUpdateState()
-    {
-        manager.enemyMovement.Patrol();
     }
 }

@@ -9,7 +9,7 @@ public class PlayerWallClimbState : PlayerBaseState
     
     public override void EnterState()
     {
-        Debug.Log("Current State : WallClimb");
+        // Debug.Log("Current State : WallClimb");
         manager.playerRB.gravityScale = 1f; // Gravity lebih kecil saat climb
         manager.playerMovement.WallClimb();
         manager.animator.Play("PlayerJump");
