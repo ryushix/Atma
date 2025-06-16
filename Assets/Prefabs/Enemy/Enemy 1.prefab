@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8335733841200215545}
   - component: {fileID: 2828342867355233085}
   - component: {fileID: 5176855238671173719}
-  - component: {fileID: 8623846024092904847}
+  - component: {fileID: 5617324237167324273}
   - component: {fileID: 8612169722683028268}
   - component: {fileID: 5638111435526684839}
   - component: {fileID: 6188099279400140289}
@@ -108,10 +108,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 3.4260807
+  m_Mass: 2.2818727
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 1.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -121,10 +121,10 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &8623846024092904847
-BoxCollider2D:
+--- !u!60 &5617324237167324273
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -157,7 +157,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.03193903, y: -0.03830558}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -167,8 +167,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.2025642, y: 0.87183654}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.71268356, y: 0.27916908}
+      - {x: -0.71421504, y: 0.28471184}
+      - {x: -0.7304261, y: -0.3468399}
+      - {x: 0.7984204, y: -0.35250664}
+      - {x: 0.7757559, y: 0.2901783}
+  m_UseDelaunayMesh: 0
 --- !u!114 &8612169722683028268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,13 +191,13 @@ MonoBehaviour:
   leftPoint: {fileID: 0}
   rightPoint: {fileID: 0}
   chaseRadius: 7
-  moveSpeed: 5
+  moveSpeed: 3.5
   canMove: 1
   idleTime: 2
-  bounceForce: 5
+  bounceForce: 9
   enableBounce: 1
-  highFrictionMaterial: {fileID: 6200000, guid: 53a253824fd826f49911eb2751e4eb99, type: 2}
-  lowFrictionMaterial: {fileID: 6200000, guid: 26e7d410b6836d14ea5b55e819b1952b, type: 2}
+  highFrictionMaterial: {fileID: 0}
+  lowFrictionMaterial: {fileID: 0}
 --- !u!114 &5638111435526684839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5540315519924393719}
   enemyMovement: {fileID: 8612169722683028268}
+  enemyHealth: {fileID: 0}
 --- !u!114 &6188099279400140289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,7 +241,6 @@ MonoBehaviour:
   maxHealth: 100
   healthUI: {fileID: 5457585478046290147}
   healthSlider: {fileID: 1880430785048303702}
-  damageCooldown: 0.5
   knockbackStrength: 100
 --- !u!95 &5540315519924393719
 Animator:
@@ -753,11 +759,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 1}
-      - {x: -0.95105654, y: 0.30901697}
-      - {x: -0.5877852, y: -0.80901706}
-      - {x: 0.58778536, y: -0.80901694}
-      - {x: 0.9510565, y: 0.30901712}
+    - - {x: 0.5448749, y: 0.39567566}
+      - {x: 0.057110548, y: 0.38780403}
+      - {x: -0.020553589, y: 0.3856964}
+      - {x: -0.63113475, y: 0.36912346}
+      - {x: -0.8528072, y: 0.20815256}
+      - {x: -0.8396649, y: -0.38758266}
+      - {x: 0.8869649, y: -0.40300345}
+      - {x: 0.90887856, y: 0.28451914}
   m_UseDelaunayMesh: 0
 --- !u!1 &7948857024869872383
 GameObject:

@@ -26,7 +26,7 @@ public class PlayerIdleState : PlayerBaseState
 
         if (Input.GetKeyDown(KeyCode.J))
         {
-            manager.playerAttack.attackPushForce = 100f;
+            manager.playerAttack.attackPushForce = 75f;
             manager.SwitchState(manager.attackState);
         }
 

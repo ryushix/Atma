@@ -4,6 +4,7 @@ public class EnemyStateManager : MonoBehaviour
 {
     public Animator animator;
     public EnemyMovement enemyMovement;
+    public EnemyHealth enemyHealth;
     private EnemyBaseState currentState;
 
     public EnemyPatrolState patrolState;
@@ -13,6 +14,7 @@ public class EnemyStateManager : MonoBehaviour
     void Awake()
     {
         enemyMovement = GetComponent<EnemyMovement>();
+        enemyHealth = GetComponent<EnemyHealth>();
         animator = GetComponent<Animator>();
 
         patrolState = new EnemyPatrolState(this);

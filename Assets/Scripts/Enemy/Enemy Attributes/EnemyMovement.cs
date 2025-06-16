@@ -40,20 +40,11 @@ public class EnemyMovement : MonoBehaviour
         float direction = movingRight ? 1f : -1f;
         enemyRb.linearVelocity = new Vector2(direction * moveSpeed, enemyRb.linearVelocity.y);
 
-        Debug.Log(enableBounce && isGrounded);
+        // Debug.Log(enableBounce && isGrounded);
         if (enableBounce && isGrounded)
         {
             Bounce();
             StartCoroutine(TemporaryIdle());
-        }
-
-        if (movingRight && transform.position.x >= rightPoint.position.x)
-        {
-            Flip();
-        }
-        else if (!movingRight && transform.position.x <= leftPoint.position.x)
-        {
-            Flip();
         }
     }
 
@@ -64,16 +55,17 @@ public class EnemyMovement : MonoBehaviour
         float direction = Mathf.Sign(playerTransform.position.x - transform.position.x);
         enemyRb.linearVelocity = new Vector2(direction * moveSpeed, enemyRb.linearVelocity.y);
 
-        if (enableBounce && isGrounded)
-        {
-            Bounce();
-        }
 
         if ((direction > 0 && !movingRight) || (direction < 0 && movingRight))
         {
             Flip();
         }
-        StartCoroutine(TemporaryIdle());
+
+        if (enableBounce && isGrounded)
+        {
+            Bounce();
+            StartCoroutine(TemporaryIdle());
+        }
     }
 
     private void Bounce()
@@ -129,6 +121,14 @@ public class EnemyMovement : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground"))
         {
+                if (movingRight && transform.position.x >= rightPoint.position.x)
+            {
+                Flip();
+            }
+            else if (!movingRight && transform.position.x <= leftPoint.position.x)
+            {
+                Flip();
+            }
             isGrounded = true;
         }
     }

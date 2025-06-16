@@ -5,7 +5,7 @@ public class PlayerDoubleJumpState : PlayerBaseState
     public PlayerDoubleJumpState(PlayerStateManager manager) : base(manager) { }
     public override void EnterState()
     {
-        // Debug.Log("Current State : DoubleJump");
+        Debug.Log("Current State : DoubleJump");
         manager.playerRB.gravityScale = 3f;
 
         manager.animator.Play("PlayerJump");
@@ -22,7 +22,24 @@ public class PlayerDoubleJumpState : PlayerBaseState
         {
             manager.playerMovement.MoveInAir(moveInput);
         }
-
+        if (!manager.playerMovement.isJumping)
+        {
+            if (manager.playerMovement.isGrounded())
+            {
+                if (Mathf.Abs(moveInput) > 0.1f)
+                    manager.SwitchState(manager.moveState);
+                else
+                    manager.SwitchState(manager.idleState);
+            }
+            if (manager.playerMovement.IsTouchingWall())
+            {
+                manager.SwitchState(manager.wallSlideState);
+            }
+            if (manager.playerMovement.isFalling())
+            {
+                manager.SwitchState(manager.fallState);
+            }
+        }
         if (manager.playerMovement.isFalling())
         {
             manager.SwitchState(manager.fallState);

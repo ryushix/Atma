@@ -274,9 +274,10 @@ public class PlayerMovement : MonoBehaviour
     public void WallClimb()
     {
         if (!canWallClimb) return;
-    
+
         playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce * 1.5f);
         hasDoubleJumped = false;
+        dashedAfterJump = false;
     }
 
     public void TryDropPlatform()

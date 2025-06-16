@@ -14,7 +14,6 @@ public class EnemyHealth : MonoBehaviour
     public Slider healthSlider;
 
     [Header("Damage Cooldown")]
-    public float damageCooldown = 0.5f;
     private float lastDamageTime = -Mathf.Infinity;
 
     [Header("Knockback Settings")]
@@ -22,6 +21,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Start()
     {
+        enemyRb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         UpdateUI();
         ShowHealthUI(false);
@@ -36,10 +36,12 @@ public class EnemyHealth : MonoBehaviour
 
         // Optional knockback
         if (enemyRb != null)
-        { 
+        {
             Vector2 knockbackDir = ((Vector2)transform.position - hitSource);
             if (knockbackDir.magnitude < 0.1f)
                 knockbackDir = Vector2.right;
+
+            knockbackDir += Vector2.up * 0.75f;
 
             knockbackDir = knockbackDir.normalized;
             enemyRb.AddForce(knockbackDir * knockbackStrength, ForceMode2D.Impulse);
@@ -71,33 +73,24 @@ public class EnemyHealth : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.CompareTag("PlayerAttack"))
+        if (collision.CompareTag("PlayerAttack"))
         {
-            if (Time.time >= lastDamageTime + damageCooldown)
-            {
-                int damage = 10;
-                Vector2 hitSource = collision.transform.position;
+            int damage = 10;
+            Vector2 hitSource = collision.transform.position;
 
-                PlayerAttack playerAttack = collision.collider.GetComponent<PlayerAttack>();
-                if (playerAttack != null)
-                {
-                    Debug.Log("Test");
-                    damage = playerAttack.damageAmount;
-                }
-
-                var stateManager = GetComponent<EnemyStateManager>();
-                if (stateManager != null)
-                {
-                    stateManager.hitState.SetupHit(damage, hitSource);
-                    stateManager.SwitchState(stateManager.hitState);
-                }
-                    lastDamageTime = Time.time;
-                }
-            else
+            PlayerAttack playerAttack = collision.GetComponent<PlayerAttack>();
+            if (playerAttack != null)
             {
-                Debug.Log("Damage on cooldown!");
+                damage = playerAttack.damageAmount;
+            }
+
+            var stateManager = GetComponent<EnemyStateManager>();
+            if (stateManager != null)
+            {
+                stateManager.hitState.SetupHit(damage, hitSource);
+                stateManager.SwitchState(stateManager.hitState);
             }
         }
     }

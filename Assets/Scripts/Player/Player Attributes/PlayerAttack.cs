@@ -1,9 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class PlayerAttack : MonoBehaviour
 {
     private Rigidbody2D playerRb;
+    public Transform attackPoint;
+    public GameObject playerAttackCollider;
+
 
     [Header("Combo Settings")]
     public float comboResetTime = 0.6f;
@@ -17,7 +21,7 @@ public class PlayerAttack : MonoBehaviour
     public int damageAmount = 10;
     public float attackCooldownTime = 0f;
     public float attack3Duration = 0.4f;
-    public float attackPushForce = 100f;
+    public float attackPushForce;
 
     private int currentCombo = 0;
     private float lastAttackTime;
@@ -32,6 +36,8 @@ public class PlayerAttack : MonoBehaviour
 
     void Awake()
     {
+        playerAttackCollider = transform.Find("PlayerAttack").GameObject();
+        attackPoint = transform.Find("attackPoint");
         playerAnim = GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody2D>();
     }
@@ -48,6 +54,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void StartCombo()
     {
+        playerAttackCollider.transform.position = attackPoint.position;
         if (!canAttack) return;
         currentCombo = 1;
         PlayComboAnimation(currentCombo);
@@ -58,6 +65,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void ContinueCombo()
     {
+        playerAttackCollider.transform.position = attackPoint.position;
         if (!canAttack) return;
         if (currentCombo < maxCombo)
         {

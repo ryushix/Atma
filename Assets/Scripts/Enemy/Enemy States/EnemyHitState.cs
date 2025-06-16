@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyHitState : EnemyBaseState
 {
-    private float recoveryTime = 0.5f;
+    private float recoveryTime = 0.1f;
     private float recoverTimer;
     private int damageAmount;
     private Vector2 _hitSource;
@@ -11,12 +11,14 @@ public class EnemyHitState : EnemyBaseState
 
     public void SetupHit(int damage, Vector2 hitSource)
     {
-        _hitSource = hitSource;
         damageAmount = damage;
+        _hitSource = hitSource;
     }
     public override void EnterState()
     {
-        manager.animator.Play("EnemyMove");
+        Debug.Log("Current State: Hit");
+        manager.enemyMovement.StopMovement();
+        manager.enemyHealth.TakeDamage(damageAmount, _hitSource);
         manager.enemyMovement.SetLowFriction();
         recoverTimer = recoveryTime;
 

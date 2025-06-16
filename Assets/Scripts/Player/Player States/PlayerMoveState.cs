@@ -25,7 +25,7 @@ public class PlayerMoveState : PlayerBaseState
 
         if (Input.GetKeyDown(KeyCode.J))
         {
-            manager.playerAttack.attackPushForce = 10f;
+            manager.playerAttack.attackPushForce = 7.5f;
             manager.SwitchState(manager.attackState);
             return;
         }

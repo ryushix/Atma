@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public Slider healthSlider;
 
     [Header("Knockback Settings")]
-    public float knockbackStrength = 50f;
+    public float knockbackStrength = 30f;
 
     [Header("Respawn Settings")]
     public float respawnDelay = 5f;
@@ -89,7 +89,7 @@ public class PlayerHealth : MonoBehaviour
     
     private void OnCollisionStay2D(Collision2D collision)
     {
-        bool enemyCollider = collision.collider.CompareTag("Enemy");
+        bool enemyCollider = collision.collider.CompareTag("EnemyAttack");
         bool hazardCollider = collision.collider.CompareTag("Hazard");
         if (enemyCollider || hazardCollider)
         {
@@ -111,10 +111,6 @@ public class PlayerHealth : MonoBehaviour
             }
                 // TakeDamage(damage, hitSource);
                 lastDamageTime = Time.time;
-            }
-            else
-            {
-                Debug.Log("Damage on cooldown!");
             }
         }
     }

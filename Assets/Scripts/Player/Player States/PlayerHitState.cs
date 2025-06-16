@@ -15,7 +15,7 @@ public class PlayerHitState : PlayerBaseState
     }
     public override void EnterState()
     {
-        Debug.Log("Current State: Hit");
+        // Debug.Log("Current State: Hit");
         manager.playerHealth.TakeDamage(damageAmount, _hitSource);
         manager.playerRB.gravityScale = 3f;
         manager.animator.Play("PlayerHit");
@@ -29,6 +29,8 @@ public class PlayerHitState : PlayerBaseState
 
         if (recoverTimer <= 0f)
         {
+            manager.playerMovement.EnableAbility();
+            manager.playerMovement.EnableBasicMovements();
             // Decide next state based on movement
             if (manager.playerMovement.isFalling())
                 manager.SwitchState(manager.fallState);
