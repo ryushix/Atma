@@ -7,12 +7,30 @@ public class DialogSignalReceiver : MonoBehaviour
 {
     public DialogManager dialogManager;
     public PlayableDirector director;
-    public enum DialogMode {Manual, AutoClose};
+    public bool autoClose;
+    public enum DialogMode { Manual, AutoClose };
     public DialogMode dialogMode;
     public string[] dialog;
 
     [Header("Events")]
     public UnityEvent onDialogComplete;
+
+    void Start()
+    {
+        autoClose = (dialogMode == DialogMode.AutoClose);
+    }
+
+    void Update()
+    {
+        if (dialogManager.nextButton != null)
+        {
+            if (dialogManager.nextButton.interactable == true && Input.GetKeyDown(KeyCode.Space))
+            {
+                
+                dialogManager.DisplayNextLine(autoClose);
+            }
+        }
+    }
 
     public void TriggerDialog()
     {
@@ -20,7 +38,6 @@ public class DialogSignalReceiver : MonoBehaviour
         {
             director.Pause(); // Stop Timeline sementara
         }
-        bool autoClose = (dialogMode == DialogMode.AutoClose);
         dialogManager.StartDialog(dialog, OnDialogFinished, autoClose);
     }
 

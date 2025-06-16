@@ -10785,6 +10785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 1328125364}
   director: {fileID: 279826166}
+  autoClose: 0
   dialogMode: 0
   dialog:
   - Apa itu???
@@ -10820,6 +10821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 1328125364}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 1
   dialog:
   - HEYY!! APA APAAN!
@@ -10852,6 +10854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 1328125364}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 1
   dialog:
   - Hampir saja...
@@ -11182,6 +11185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 1985537727}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 1
   dialog:
   - 'Tekan atau tahan spasi : [_________] untuk melompat'
@@ -11604,6 +11608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 1985537727}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 0
   dialog:
   - Tekan E untuk Interaksi objek
@@ -47900,6 +47905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 1328125364}
   director: {fileID: 1443265939}
+  autoClose: 0
   dialogMode: 0
   dialog:
   - Entah berapa lama sudah aku tertidur
@@ -47936,6 +47942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 1985537727}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 1
   dialog:
   - "Tekan Tombol arah (\u2190/\u2192) atau Tombol 'A'/'D' untuk bergerak"
@@ -47968,6 +47975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 1328125364}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 1
   dialog:
   - Sepertinya aku tahu tempat ini, Tapi mengapa begitu sepi?
@@ -49752,6 +49760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 1328125364}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 0
   dialog:
   - Lebih baik jangan kesini dulu

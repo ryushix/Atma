@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    private Animator animator;
     private Rigidbody2D enemyRb;
     private Collider2D playerCollider;
     public Transform playerTransform;
@@ -31,6 +32,7 @@ public class EnemyMovement : MonoBehaviour
     void Awake()
     {
         enemyRb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     public void Patrol()
@@ -54,6 +56,7 @@ public class EnemyMovement : MonoBehaviour
 
         float direction = Mathf.Sign(playerTransform.position.x - transform.position.x);
         enemyRb.linearVelocity = new Vector2(direction * moveSpeed, enemyRb.linearVelocity.y);
+
 
 
         if ((direction > 0 && !movingRight) || (direction < 0 && movingRight))

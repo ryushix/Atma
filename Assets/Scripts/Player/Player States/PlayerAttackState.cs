@@ -30,7 +30,7 @@ public class PlayerAttackState : PlayerBaseState
         float moveInput = Input.GetAxisRaw("Horizontal");
 
         // Simpan input ke buffer
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             attackBuffered = true;
             lastInputTime = Time.time;

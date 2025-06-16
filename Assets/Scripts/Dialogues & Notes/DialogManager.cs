@@ -91,6 +91,8 @@ public class DialogManager : MonoBehaviour
 
     void EndDialog()
     {
+        if(nextButton != null) nextButton.interactable = false;
+
         dialogPanel.SetActive(false);
         onDialogFinished?.Invoke();
     }

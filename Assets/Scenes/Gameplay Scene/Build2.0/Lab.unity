@@ -450,7 +450,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 87329571}
   m_OnClick:
     m_PersistentCalls:
@@ -1209,7 +1209,7 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1264828880}
         m_TargetAssemblyTypeName: PlayerStateManager, Assembly-CSharp
         m_MethodName: DisableControls
         m_Mode: 1
@@ -1252,7 +1252,7 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1264828880}
         m_TargetAssemblyTypeName: PlayerStateManager, Assembly-CSharp
         m_MethodName: EnableControls
         m_Mode: 1
@@ -1282,7 +1282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &317140330
 Transform:
   m_ObjectHideFlags: 0
@@ -1312,6 +1312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 184356802}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 0
   dialog:
   - E
@@ -1652,6 +1653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 1184265832}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 0
   dialog:
   - Catatan Pribadi IIII
@@ -1688,6 +1690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 184356802}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 0
   dialog:
   - E
@@ -2272,6 +2275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 1284056714}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 0
   dialog:
   - Akhirnya
@@ -2324,6 +2328,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1264828883}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: EnableAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1264828884}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: EnableAbility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &887194782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2338,6 +2366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 184356802}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 0
   dialog:
   - E
@@ -2473,6 +2502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 336344991}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 0
   dialog:
   - Hah?! Suara siapa itu?
@@ -2495,17 +2525,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: EnableAbility
-        m_Mode: 1
+      - m_Target: {fileID: 317140329}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &915185951
 GameObject:
@@ -2592,6 +2622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 336344991}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 1
   dialog:
   - Hampir saja...
@@ -2624,6 +2655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 336344991}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 1
   dialog:
   - HEYY!! APA APAAN!
@@ -2644,6 +2676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 336344991}
   director: {fileID: 940015427}
+  autoClose: 0
   dialogMode: 0
   dialog:
   - Apa itu???
@@ -3455,6 +3488,39 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1264828880 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 569617294756242569, guid: a2320a1d97fb97b4d8afa025cd3a35ec, type: 3}
+  m_PrefabInstance: {fileID: 82830715}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a75568873564cdb43a6776d7456a0948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1264828883 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6435553769409438163, guid: a2320a1d97fb97b4d8afa025cd3a35ec, type: 3}
+  m_PrefabInstance: {fileID: 82830715}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26cda3a36a5fc184b8754fb389248c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1264828884 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6679139579762367548, guid: a2320a1d97fb97b4d8afa025cd3a35ec, type: 3}
+  m_PrefabInstance: {fileID: 82830715}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9403309b139e4498c4be6f111ee5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1269585646
 GameObject:
   m_ObjectHideFlags: 0
@@ -3659,7 +3725,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1339378738}
   m_OnClick:
     m_PersistentCalls:
@@ -15938,6 +16004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 184356802}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 0
   dialog:
   - E
@@ -15989,9 +16056,9 @@ MonoBehaviour:
   InteractionEvents:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1457955437}
-        m_TargetAssemblyTypeName: DialogSignalReceiver, Assembly-CSharp
-        m_MethodName: TriggerDialog
+      - m_Target: {fileID: 11400000, guid: 34285e2c5f086d14894d09908206b4da, type: 2}
+        m_TargetAssemblyTypeName: GameEvents, Assembly-CSharp
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16001,9 +16068,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 34285e2c5f086d14894d09908206b4da, type: 2}
-        m_TargetAssemblyTypeName: GameEvents, Assembly-CSharp
-        m_MethodName: Raise
+      - m_Target: {fileID: 1457955437}
+        m_TargetAssemblyTypeName: DialogSignalReceiver, Assembly-CSharp
+        m_MethodName: TriggerDialog
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16073,6 +16140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 1184265832}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 0
   dialog:
   - Catatan Pribadi III
@@ -16515,6 +16583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 680427838}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 1
   dialog:
   - "Tekan Tombol arah (\u2190/\u2192) atau Tombol 'A'/'D' untuk bergerak"
@@ -16547,6 +16616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 336344991}
   director: {fileID: 0}
+  autoClose: 0
   dialogMode: 1
   dialog:
   - Sepertinya aku tahu tempat ini, Tapi mengapa begitu sepi?
@@ -16567,6 +16637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogManager: {fileID: 336344991}
   director: {fileID: 1808840065}
+  autoClose: 0
   dialogMode: 0
   dialog:
   - Entah berapa lama sudah aku tertidur

@@ -24,7 +24,7 @@ public class PlayerIdleState : PlayerBaseState
         manager.playerMovement.TryDropPlatform();
         int wallDir = manager.playerMovement.GetWallDirection();
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             manager.playerAttack.attackPushForce = 75f;
             manager.SwitchState(manager.attackState);

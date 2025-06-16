@@ -262,9 +262,9 @@ MonoBehaviour:
   canMove: 1
   canJump: 1
   canDash: 0
-  canDoubleJump: 1
-  canWallJump: 1
-  canWallClimb: 1
+  canDoubleJump: 0
+  canWallJump: 0
+  canWallClimb: 0
   highFrictionMaterial: {fileID: 6200000, guid: 53a253824fd826f49911eb2751e4eb99, type: 2}
   lowFrictionMaterial: {fileID: 6200000, guid: 26e7d410b6836d14ea5b55e819b1952b, type: 2}
 --- !u!114 &5541451689716309317

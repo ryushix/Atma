@@ -8,7 +8,7 @@ public class EnemyPatrolState : EnemyBaseState
     {
         // Debug.Log("Enemy State: Patrol");
 
-        manager.animator.Play("EnemyMove");
+        manager.animator.Play("Patrolling");
         manager.enemyMovement.SetLowFriction();
 
         var health = manager.GetComponent<EnemyHealth>();

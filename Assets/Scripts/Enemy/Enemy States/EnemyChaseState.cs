@@ -8,7 +8,7 @@ public class EnemyChaseState : EnemyBaseState
     {
         // Debug.Log("Enemy State: Chase");
 
-        manager.animator.Play("EnemyMove");
+        manager.animator.Play("Patrolling");
         manager.enemyMovement.SetLowFriction();
 
         var health = manager.GetComponent<EnemyHealth>();

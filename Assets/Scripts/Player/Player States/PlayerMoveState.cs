@@ -23,7 +23,7 @@ public class PlayerMoveState : PlayerBaseState
         manager.playerMovement.TryDropPlatform();
         int wallDir = manager.playerMovement.GetWallDirection();
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             manager.playerAttack.attackPushForce = 10f;
             manager.SwitchState(manager.attackState);
