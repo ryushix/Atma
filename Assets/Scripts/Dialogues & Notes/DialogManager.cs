@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using System;
-using UnityEditor.PackageManager;
+// using UnityEditor.PackageManager;
 
 public class DialogManager : MonoBehaviour
 {

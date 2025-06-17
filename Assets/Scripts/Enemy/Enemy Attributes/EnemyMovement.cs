@@ -38,6 +38,7 @@ public class EnemyMovement : MonoBehaviour
     public void Patrol()
     {
         if (!canMove) return;
+        SetHighFriction();
 
         float direction = movingRight ? 1f : -1f;
         enemyRb.linearVelocity = new Vector2(direction * moveSpeed, enemyRb.linearVelocity.y);

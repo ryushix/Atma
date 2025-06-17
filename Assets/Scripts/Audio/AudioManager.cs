@@ -4,7 +4,6 @@ public class AudioManager : MonoBehaviour
 {
     [Header("Audio Source")]
     [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource SFXSource;
 
     [Header("Audio Clip")]
     public AudioClip background;
@@ -21,8 +20,6 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-            
-
     }
 
     private void Start()
@@ -31,8 +28,12 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    public void PlaySFX(AudioClip clip)
-    {
-        SFXSource.PlayOneShot(clip);
-    }
+    public void ChangeMusic(AudioClip newClip)
+{
+    if (musicSource.clip == newClip) return; // Tidak perlu ganti jika sama
+
+    musicSource.Stop();
+    musicSource.clip = newClip;
+    musicSource.Play();
+}
 }

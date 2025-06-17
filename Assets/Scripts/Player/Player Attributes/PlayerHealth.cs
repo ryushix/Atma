@@ -4,14 +4,14 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Health Settings")]
-    public int maxHealth = 100;
+    public int maxHealth = 200;
     public int currentHealth;
 
     [Header("UI (Optional)")]
     public Slider healthSlider;
 
     [Header("Knockback Settings")]
-    public float knockbackStrength = 30f;
+    public float knockbackStrength = 50f;
 
     [Header("Respawn Settings")]
     public float respawnDelay = 5f;
@@ -34,6 +34,12 @@ public class PlayerHealth : MonoBehaviour
         initialRotation = transform.rotation;
 
         // Debug.Log($"{gameObject.name} starting with {currentHealth} HP.");
+        UpdateUI();
+    }
+
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
         UpdateUI();
     }
 
