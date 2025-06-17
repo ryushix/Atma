@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5963137445778910787
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
-  m_Name: CinemachineShot
-  m_EditorClassIdentifier: 
-  DisplayName: 
-  VirtualCamera:
-    exposedName: 6be7d8eb5a6d8a940bcdc9f38d672b57
-    defaultValue: {fileID: 0}
 --- !u!114 &-5892890113156248364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55,6 +39,22 @@ MonoBehaviour:
   DisplayName: 
   VirtualCamera:
     exposedName: 5c3f159d07ebad148a39e83a5c74c550
+    defaultValue: {fileID: 0}
+--- !u!114 &-2458940895690835021
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
+  m_Name: CinemachineShot
+  m_EditorClassIdentifier: 
+  DisplayName: 
+  VirtualCamera:
+    exposedName: f054231008a6fc946be9b1ee45c4381c
     defaultValue: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 6.2
+  m_Time: 5.0500000000000025
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: e157ac7d553164f4d8d0504c4d7fa4ae, type: 2}
@@ -208,7 +208,7 @@ MonoBehaviour:
     m_ParentTrack: {fileID: 8526796680594092435}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 0.799999999999998
+    m_BlendInDuration: 0.8833333333333333
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -235,14 +235,14 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -5963137445778910787}
-    m_Duration: 3.5333333333333337
+    m_Asset: {fileID: -2458940895690835021}
+    m_Duration: 3.616666666666669
     m_TimeScale: 1
     m_ParentTrack: {fileID: 8526796680594092435}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0.9000000000000017
-    m_BlendOutDuration: 0.799999999999998
+    m_BlendOutDuration: 0.8833333333333333
     m_MixInCurve:
       serializedVersion: 2
       m_Curve:

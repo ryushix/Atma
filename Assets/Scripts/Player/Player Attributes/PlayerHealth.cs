@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -14,17 +15,16 @@ public class PlayerHealth : MonoBehaviour
     public float knockbackStrength = 50f;
 
     [Header("Respawn Settings")]
-    public float respawnDelay = 5f;
+    public float respawnDelay = 1f;
     private Vector3 initialPosition;
     private Quaternion initialRotation;
 
     [Header("Damage Settings")]
     public float damageCooldown = 1f;
     [HideInInspector] public float lastDamageTime = -Mathf.Infinity;
-    // public int damageTaken;
 
     private Rigidbody2D rb;
-    // public Vector2 hitSource;
+    public UnityEvent DieEvent;
 
     void Start()
     {
@@ -75,14 +75,14 @@ public class PlayerHealth : MonoBehaviour
             healthSlider.value = (float)currentHealth / maxHealth;
     }
 
-    void Die()
+    public void Die()
     {
         // Debug.Log($"{gameObject.name} has died. Respawning in {respawnDelay} seconds.");
         gameObject.SetActive(false);
-        Invoke(nameof(Respawn), respawnDelay);
+        DieEvent.Invoke();
     }
 
-    void Respawn()
+    public void Respawn()
     {
         currentHealth = maxHealth;
         transform.position = initialPosition;
